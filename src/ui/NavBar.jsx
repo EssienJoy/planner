@@ -20,12 +20,10 @@ const StyledNavBar = styled.header`
 	justify-content: space-between;
 	font-weight: 500;
 	margin-bottom: 2rem;
-	font-size: 1rem;
 
 	@media (max-width: 550px) {
 		padding: 1rem;
 		margin-bottom: 1rem;
-		font-size: 0.75rem;
 	}
 `;
 
@@ -41,10 +39,13 @@ function NavBar() {
 
 			<Nav />
 
-			<MobileNav toggleMenu={toggleMenu} />
+			<MobileNav toggleMenu={toggleMenu} setIsToggleMenu={setIsToggleMenu} />
 
 			<div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-				<HarmburgerMenu setIsToggleMenu={setIsToggleMenu} />
+				<HarmburgerMenu
+					setIsToggleMenu={setIsToggleMenu}
+					toggleMenu={toggleMenu}
+				/>
 
 				{isAuthenticated ? (
 					<div style={{ display: "flex", gap: "1rem" }}>
@@ -54,7 +55,7 @@ function NavBar() {
 				) : (
 					<StyledLists to='/signup'>
 						<p>Sign up</p>
-						<IoEnter style={{ flexShrink: 0 }} />
+						<IoEnter size='1.5rem' />
 					</StyledLists>
 				)}
 			</div>

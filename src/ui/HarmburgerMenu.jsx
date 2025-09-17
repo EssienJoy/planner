@@ -8,9 +8,9 @@ const Button = styled.button`
 	}
 `;
 
-function HarmburgerMenu({ setIsToggleMenu }) {
+function HarmburgerMenu({ setIsToggleMenu, toggleMenu }) {
 	function handleToggleMenu() {
-		setIsToggleMenu((t) => !t);
+		setIsToggleMenu(!toggleMenu);
 	}
 
 	return (

@@ -8,10 +8,6 @@ const GlobalStyles = createGlobalStyle`
     --color-primary: #E8E8E8;
     --color-secondary:#000;
     --color-text-black: #000;
-
-    --font-size-sm:0.85rem;
-    --font-size-md:1rem;
-    --font-size-lg:1.5rem;
     
  }
 
@@ -31,7 +27,7 @@ body{
   font-family: "Poppins", sans-serif;
   background-color: var(--color-primary);
   line-height: 1.5;
-  font-size: var(--font-size-md);
+  font-size: 1rem;
   padding:1rem 0.25rem;
   color:var(--color-text-black) ;
 }
@@ -117,15 +113,6 @@ h6 {
 }
 
 
-
-@media screen and (max-width:550px){
-  h2{
-     font-size: 1rem
-  }
-  p{
-    font-size:0.85rem
-  }
-}
 
 `;
 

@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { RiCloseLine } from "react-icons/ri";
 import { HiOutlineHome, HiCalendarDays } from "react-icons/hi2";
 import { HiOutlineLogin, HiOutlineLogout } from "react-icons/hi";
+
 import { useAuth } from "../context/useAuth";
 import StyledLists from "./StyledLists";
 import Button from "./Button";
@@ -11,15 +13,15 @@ const StyledUl = styled.nav`
 	border-radius: 1rem;
 	display: none;
 	flex-direction: column;
-	padding: 1rem;
+	padding: 1.5rem;
 	gap: 1rem;
 	list-style: none;
-	font-size: 1rem;
 	font-weight: 500;
 	position: fixed;
 	top: 0;
 	right: 0;
 	z-index: 1000;
+	width: 70%;
 
 	@media (max-width: 850px) {
 		display: flex;
@@ -32,7 +34,7 @@ const StyledUl = styled.nav`
 	}
 `;
 
-function MobileNav({ toggleMenu }) {
+function MobileNav({ toggleMenu, setIsToggleMenu }) {
 	const { isAuthenticated, logout } = useAuth();
 
 	return (
@@ -41,6 +43,11 @@ function MobileNav({ toggleMenu }) {
 				transform: toggleMenu ? "translateX(0)" : "translateX(100%)",
 				transition: "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)",
 			}}>
+			<StyledLists to='/'>
+				<button onClick={() => setIsToggleMenu(false)}>
+					<RiCloseLine size='1.5rem' />
+				</button>
+			</StyledLists>
 			<StyledLists to='/'>
 				<HiOutlineHome />
 				<span>Home</span>
@@ -51,10 +58,12 @@ function MobileNav({ toggleMenu }) {
 				<span>Plans</span>
 			</StyledLists>
 			{isAuthenticated ? (
-				<Button onClick={logout}>
-					<HiOutlineLogout />
-					<span>Logout </span>
-				</Button>
+				<StyledLists style={{ justifySelf: "flex-start" }}>
+					<Button onClick={logout}>
+						<HiOutlineLogout />
+						<span>Logout </span>
+					</Button>
+				</StyledLists>
 			) : (
 				<StyledLists to='/login'>
 					<HiOutlineLogin />
