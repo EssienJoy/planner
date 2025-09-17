@@ -43,11 +43,9 @@ function MobileNav({ toggleMenu, setIsToggleMenu }) {
 				transform: toggleMenu ? "translateX(0)" : "translateX(100%)",
 				transition: "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)",
 			}}>
-			<StyledLists to='/'>
-				<button onClick={() => setIsToggleMenu(false)}>
-					<RiCloseLine size='1.5rem' />
-				</button>
-			</StyledLists>
+			<button onClick={() => setIsToggleMenu(false)}>
+				<RiCloseLine size='1.5rem' />
+			</button>
 			<StyledLists to='/'>
 				<HiOutlineHome />
 				<span>Home</span>
