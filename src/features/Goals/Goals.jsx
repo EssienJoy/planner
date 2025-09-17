@@ -90,7 +90,6 @@ const Ul = styled.ul`
 		border-radius: 1rem;
 		padding: 0.5rem 1rem;
 		margin: 2rem 0;
-		font-size: 1.2rem;
 		border-bottom: 2px solid #cececf;
 
 		p {
@@ -108,8 +107,6 @@ const Ul = styled.ul`
 		padding: 0;
 		li {
 			gap: 1rem;
-			margin: 0;
-			font-size: 0.95rem;
 			input {
 				height: 1.5rem;
 				width: 1.5rem;
@@ -121,15 +118,14 @@ const Ul = styled.ul`
 const Div = styled.div`
 	display: flex;
 	justify-content: space-between;
-	gap: 1rem;
+	gap: 0.5rem;
 	flex-wrap: wrap;
-	font-size: 1.2rem;
 	font-weight: bold;
 	margin: 2rem 0;
 
 	@media screen and (max-width: 550px) {
+		margin: 1rem 0;
 		h3 {
-			font-size: 0.95rem;
 			padding: 0;
 		}
 	}

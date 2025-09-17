@@ -23,7 +23,7 @@ function Footer() {
 export default Footer;
 
 const StyledFooter = styled.footer`
-	padding: 1rem 2rem;
+	padding: 1rem;
 	box-shadow: 5px 5px 14px #c8c8c8, -5px -5px 14px #ffffff;
 	border-radius: 1rem;
 	display: flex;

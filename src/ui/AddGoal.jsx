@@ -53,7 +53,6 @@ const Form = styled.form`
 
 	button {
 		align-self: center;
-		font-size: 1.5rem;
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
@@ -72,12 +71,8 @@ const Form = styled.form`
 	@media screen and (max-width: 550px) {
 		textarea {
 			border-radius: 1rem;
-			font-size: 0.9rem;
 			height: 4rem;
-			padding: 1rem;
-		}
-		button {
-			font-size: 1rem;
+			padding: 1.5rem 0.5rem;
 		}
 	}
 `;

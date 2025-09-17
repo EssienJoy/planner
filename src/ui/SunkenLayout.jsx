@@ -5,20 +5,12 @@ const SunkenLayout = styled.p`
 		props.as === "h2" &&
 		css`
 			font-size: 1.5rem;
-
-			@media (max-width: 450px) {
-				font-size: 1rem;
-			}
 		`}
 
 	${(props) =>
 		props.as === "p" &&
 		css`
 			font-size: 1rem;
-
-			@media (max-width: 450px) {
-				font-size: 0.85rem;
-			}
 		`}
 		
 	${(props) =>
@@ -30,7 +22,7 @@ const SunkenLayout = styled.p`
 			list-style-position: inside;
 
 			@media (max-width: 450px) {
-				font-size: 0.9rem;
+				font-size: 1rem;
 			}
 		`}
 
