@@ -79,7 +79,7 @@ function NavLeft() {
 	return (
 		<Button
 			onClick={() => dispatch(setDate(subYears(currentDate, 1).toISOString()))}>
-			<HiOutlineChevronLeft />
+			<HiOutlineChevronLeft size='1rem' />
 		</Button>
 	);
 }
@@ -92,7 +92,7 @@ function NavRight() {
 	return (
 		<Button
 			onClick={() => dispatch(setDate(addYears(currentDate, 1).toISOString()))}>
-			<HiOutlineChevronRight />
+			<HiOutlineChevronRight size='1rem' />
 		</Button>
 	);
 }
@@ -105,34 +105,30 @@ function Grid() {
 	const lastDayOfMonth = endOfMonth(currentDate);
 
 	return (
-		<BoxShadow>
-			<CalenderLayout className='calendar-layout'>
-				{weekdays.map((day) => (
-					<p key={day}>{day}</p>
-				))}
+		<CalenderLayout className='calendar-layout'>
+			{weekdays.map((day) => (
+				<p key={day}>{day}</p>
+			))}
 
-				{Array.from({ length: getDay(firstDayOfMonth) || 7 }).map(
-					(_, index) => (
-						<p key={`empty-${index}`} />
-					)
-				)}
+			{Array.from({ length: getDay(firstDayOfMonth) || 7 }).map((_, index) => (
+				<p key={`empty-${index}`} />
+			))}
 
-				{eachDayOfInterval({
-					start: firstDayOfMonth,
-					end: lastDayOfMonth,
-				}).map((day, index) =>
-					isSameDay(
-						format(currentDate, "LLL y") === format(new Date(), "LLL y") &&
-							currentDate,
-						day
-					) ? (
-						<Active key={index}>{format(day, "d")}</Active>
-					) : (
-						<p key={index}>{format(day, "d")}</p>
-					)
-				)}
-			</CalenderLayout>
-		</BoxShadow>
+			{eachDayOfInterval({
+				start: firstDayOfMonth,
+				end: lastDayOfMonth,
+			}).map((day, index) =>
+				isSameDay(
+					format(currentDate, "LLL y") === format(new Date(), "LLL y") &&
+						currentDate,
+					day
+				) ? (
+					<Active key={index}>{format(day, "d")}</Active>
+				) : (
+					<p key={index}>{format(day, "d")}</p>
+				)
+			)}
+		</CalenderLayout>
 	);
 }
 
@@ -150,13 +146,10 @@ const CalenderLayout = styled.div`
 	gap: 1rem;
 	padding: 1rem;
 	font-weight: 600;
-	font-size: 1rem;
 
 	@media (max-width: 450px) {
-		font-size: 0.85rem;
 		padding: 0;
 		gap: 0.5rem;
-		width: 100%;
 	}
 
 	p {
@@ -180,12 +173,6 @@ const Select = styled.select`
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	font-weight: 600;
-	font-size: 1rem;
 	outline: none;
-
 	box-shadow: inset -5px -5px 14px #a8a8a8, inset 5px 5px 14px #ffffff;
-
-	@media (max-width: 450px) {
-		font-size: 0.85rem;
-	}
 `;

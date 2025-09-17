@@ -26,7 +26,6 @@ body{
   
   font-family: "Poppins", sans-serif;
   background-color: var(--color-primary);
-  line-height: 1.5;
   font-size: 1rem;
   padding:1rem 0.25rem;
   color:var(--color-text-black) ;
@@ -35,6 +34,7 @@ body{
 h2{
   font-size: 1.5rem;
 }
+
 
 input,
 button,

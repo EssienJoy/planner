@@ -18,58 +18,56 @@ function DashboardEvents() {
 	const currentDate = useSelector((store) => store.date.currentDate);
 
 	return (
-		<BoxShadow style={{ flexGrow: "1" }}>
-			<Row type='vertical'>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyItems: "center",
-						gap: "1rem",
-					}}>
-					<Clock />
+		<Row type='vertical' style={{ flexGrow: "1" }}>
+			<BoxShadow
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyItems: "center",
+					gap: "1rem",
+				}}>
+				<Clock />
 
-					<BoxShadow style={{ padding: "1rem" }}>
-						<Image src='notification.jpg' alt='Notificatio Icon' />
-						<p>{format(currentDate, "p")}</p>
-						<p>{format(currentDate, "EEE, MMM d, yy")}</p>
-					</BoxShadow>
-				</div>
+				<BoxShadow>
+					<Image src='notification.jpg' alt='Notificatio Icon' />
+					<p>{format(currentDate, "p")}</p>
+					<p>{format(currentDate, "EEE, MMM d, yy")}</p>
+				</BoxShadow>
+			</BoxShadow>
 
-				<BoxShadow style={{ height: "12rem" }}>
-					<h2>Tracked Plans</h2>
-					{isAuthenticated ? (
-						plans?.length ? (
-							<ul>
-								{isLoading ? (
-									<div className='spinner'></div>
-								) : (
-									plans?.slice(0, 2).map((plan) => (
-										<SunkenLayout as='li' key={plan.id}>
-											{plan.title}
-										</SunkenLayout>
-									))
-								)}
-							</ul>
-						) : (
-							<p>
-								Your tracked plans are empty, create a plan{" "}
-								<Link to='/plansPage' className='underline'>
-									now
-								</Link>
-							</p>
-						)
+			<BoxShadow style={{ height: "12rem" }}>
+				<h2>Tracked Plans</h2>
+				{isAuthenticated ? (
+					plans?.length ? (
+						<ul>
+							{isLoading ? (
+								<div className='spinner'></div>
+							) : (
+								plans?.slice(0, 2).map((plan) => (
+									<SunkenLayout as='li' key={plan.id}>
+										{plan.title}
+									</SunkenLayout>
+								))
+							)}
+						</ul>
 					) : (
 						<p>
-							Create a plan, Track plans, Complete goals,{" "}
-							<Link className='underline' to='/login'>
-								Get Started
+							Your tracked plans are empty, create a plan{" "}
+							<Link to='/plansPage' className='underline'>
+								now
 							</Link>
 						</p>
-					)}
-				</BoxShadow>
-			</Row>
-		</BoxShadow>
+					)
+				) : (
+					<p>
+						Create a plan, Track plans, Complete goals,{" "}
+						<Link className='underline' to='/login'>
+							Get Started
+						</Link>
+					</p>
+				)}
+			</BoxShadow>
+		</Row>
 	);
 }
 

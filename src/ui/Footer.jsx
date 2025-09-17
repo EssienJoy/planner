@@ -25,14 +25,13 @@ export default Footer;
 const StyledFooter = styled.footer`
 	padding: 1rem 2rem;
 	box-shadow: 5px 5px 14px #c8c8c8, -5px -5px 14px #ffffff;
-	border-radius: 3rem;
+	border-radius: 1rem;
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	font-weight: 500;
 	margin-top: 2rem;
-	font-size: 1rem;
 	gap: 0.5rem;
 
 	* .brand {
@@ -44,6 +43,5 @@ const StyledFooter = styled.footer`
 	.links {
 		display: flex;
 		gap: 1rem;
-		font-size: 0.85rem;
 	}
 `;

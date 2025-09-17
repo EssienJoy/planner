@@ -7,8 +7,8 @@ import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
 
 function UserLoginForm() {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("ejojo@gmail.com");
+	const [password, setPassword] = useState("sleep123#");
 
 	const { login, loading } = useAuth();
 
