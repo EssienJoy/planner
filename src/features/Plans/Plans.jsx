@@ -42,7 +42,7 @@ function Plans() {
 			<>
 				<StyledPlansContainer>
 					{isLoading ? (
-						<div className='spinner-mini '></div>
+						<div className='spinner'></div>
 					) : (
 						<>
 							<h2>
@@ -86,7 +86,9 @@ function Plans() {
 					</StyledWrapper>
 
 					<Calendar>
-						<Calendar.Grid />
+						<BoxShadow>
+							<Calendar.Grid />
+						</BoxShadow>
 					</Calendar>
 				</Row>
 			</>
@@ -112,7 +114,6 @@ const StyledWrapper = styled(BoxShadow)`
 	}
 
 	label {
-		font-size: 0.9rem;
 		font-weight: 600;
 		color: #555;
 		margin-bottom: 0.25rem;
@@ -122,7 +123,6 @@ const StyledWrapper = styled(BoxShadow)`
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		font-size: 1rem;
 	}
 
 	.date-row {
@@ -137,7 +137,6 @@ const StyledWrapper = styled(BoxShadow)`
 		background: #fafafa;
 		transition: border 0.2s;
 		outline: none;
-		font-size: 1rem;
 
 		&:focus {
 			border-color: #4f46e5;
@@ -153,7 +152,6 @@ const StyledWrapper = styled(BoxShadow)`
 			display: flex;
 			align-items: stretch;
 			flex-direction: column;
-			font-size: 0.85rem;
 
 			button {
 				align-self: start;
@@ -161,7 +159,6 @@ const StyledWrapper = styled(BoxShadow)`
 		}
 
 		input[type="date"] {
-			font-size: 0.85rem;
 			padding: 0.5rem 1rem;
 		}
 	}
@@ -189,13 +186,7 @@ const StyledPlansContainer = styled(BoxShadow)`
 
 	h2 {
 		font-weight: bold;
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		padding: 0.5rem;
-	}
-
-	@media (max-width: 550px) {
-		h2 {
-			font-size: 1rem;
-		}
 	}
 `;

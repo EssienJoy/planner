@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 import Button from "../../ui/Button";
 import DropdownMenuPlans from "./DropdownMenuPlans";
-import { format } from "date-fns";
 
 function PlansList({ plans }) {
 	const [selectedId, setSelectedId] = useState(null);
@@ -17,7 +16,6 @@ function PlansList({ plans }) {
 		<StyledPlansList>
 			{plans.map((plan) => (
 				<li key={plan.id}>
-					<p>{format(new Date(plan.dateCreated), "MMM do")}</p>
 					<p>{plan.title}</p>
 
 					<Button onClick={() => handleToggleMenu(plan.id)}>
@@ -35,22 +33,19 @@ export default PlansList;
 const StyledPlansList = styled.ul`
 	padding: 0 1rem;
 	overflow-y: scroll;
+	height: 30rem;
 
-	height: 100dvh;
-
-	@media (max-width: 1000px) {
-		height: 50dvh;
+	@media screen and (max-width: 1000px) {
+		height: 20rem;
 	}
 
 	li {
 		position: relative;
-		font-size: 1rem;
 		display: grid;
-		grid-template-columns: 2fr 3fr 1fr;
+		grid-template-columns: 3fr 1fr;
 		gap: 1rem;
 		border-radius: 1rem;
-		padding: 0.5rem 1rem;
-
+		padding: 0.5rem;
 		margin: 1rem 0;
 		border-bottom: 2px solid #cececf;
 
@@ -62,8 +57,5 @@ const StyledPlansList = styled.ul`
 
 	@media (max-width: 550px) {
 		padding: 0;
-		li {
-			font-size: 0.85rem;
-		}
 	}
 `;
