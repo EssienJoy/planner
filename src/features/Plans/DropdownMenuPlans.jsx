@@ -8,7 +8,7 @@ function DropdownMenuPlans({ planId }) {
 	return (
 		<Dropdown>
 			<li>
-				<Link to={`/plansPage/${planId}`}>View</Link>
+				<Link to={`/plans/${planId}`}>View</Link>
 			</li>
 			<li>
 				<button disabled={isDeleting} onClick={() => deletePlan(planId)}>

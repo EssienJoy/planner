@@ -33,7 +33,7 @@ function Nav() {
 				<span>Home</span>
 			</StyledLists>
 
-			<StyledLists to='/plansPage'>
+			<StyledLists to='/plans'>
 				<HiCalendarDays />
 				<span>Plans</span>
 			</StyledLists>
