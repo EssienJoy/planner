@@ -32,7 +32,10 @@ function Plans() {
 				dateCreated: date,
 			},
 			{
-				onSuccess: () => setCreatePlan(""),
+				onSuccess: () => {
+					setCreatePlan("");
+					setDate("");
+				},
 			}
 		);
 	}
