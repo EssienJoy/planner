@@ -1,7 +1,6 @@
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
-import LayoutContainer from "../../ui/LayoutContainer";
 import styled from "styled-components";
 import Button from "../../ui/Button";
 import { useCreateUser } from "../../hooks/useCreateUser";
@@ -20,14 +19,19 @@ function SignUpForm() {
 	};
 
 	return (
-		<LayoutContainer>
+		<section
+			style={{
+				display: "grid",
+				placeItems: "center",
+				height: "100dvh",
+			}}>
 			<StyledWrapper>
 				<button type='button' onClick={() => navigate(-1)}>
 					<IoIosArrowRoundBack size='2rem' />
 				</button>
 
 				<form className='form' onSubmit={handleSubmit}>
-					<p id='heading'>Sign up</p>
+					<h3>Sign up</h3>
 
 					<input
 						name='surname'
@@ -66,7 +70,7 @@ function SignUpForm() {
 					</Button>
 				</form>
 			</StyledWrapper>
-		</LayoutContainer>
+		</section>
 	);
 }
 
@@ -74,8 +78,7 @@ export default SignUpForm;
 
 const StyledWrapper = styled.div`
 	box-shadow: 10px 10px 20px #d4d3d3, -4px -4px 20px #ffffff;
-	width: 50%;
-	margin: 2rem auto;
+	width: 60%;
 	padding: 1rem;
 	border-radius: 3rem;
 
@@ -104,9 +107,8 @@ const StyledWrapper = styled.div`
 		}
 	}
 
-	#heading {
+	h3 {
 		text-align: center;
-		font-size: 1.25rem;
 	}
 
 	@media screen and (max-width: 800px) {
