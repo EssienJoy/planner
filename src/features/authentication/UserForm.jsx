@@ -66,7 +66,7 @@ function UserLoginForm() {
 export default UserLoginForm;
 
 const UserFormLayout = styled(BoxShadow)`
-	width: 300px;
+	width: 60%;
 	display: grid;
 	place-items: center;
 	gap: 3rem;
@@ -113,5 +113,12 @@ const UserFormLayout = styled(BoxShadow)`
 		button {
 			align-self: center;
 		}
+	}
+
+	@media screen and (max-width: 800px) {
+		width: 70%;
+	}
+	@media screen and (max-width: 550px) {
+		width: 98%;
 	}
 `;
