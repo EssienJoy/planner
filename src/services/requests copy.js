@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 
 // Sign up
 export async function createUser(userData) {
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/users`, {
+    const res = await fetch(`http://localhost:8000/users/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export async function createUser(userData) {
 // Authenticate User
 export async function getUserId(email) {
     const res = await fetch(
-        `https://eazy-mart-users-data.onrender.com/users?email=${encodeURIComponent(email)}`
+        `http://localhost:8000/users?email=${encodeURIComponent(email)}`
     );
 
     if (!res.ok) toast.error("Unable to connect to server");
@@ -41,7 +41,7 @@ export async function getUser() {
     if (!userId) throw new Error('Login not Successful');
 
     const res = await fetch(
-        `https://eazy-mart-users-data.onrender.com/users?id=${userId}`
+        `http://localhost:8000/users?id=${userId}`
     );
 
     if (!res.ok) throw new Error("Unable to connect to server");
@@ -55,7 +55,7 @@ export async function getUser() {
 
 // Create plan
 export async function createPlanApi(data) {
-    const res = await fetch("https://eazy-mart-users-data.onrender.com/plans", {
+    const res = await fetch("http://localhost:8000/plans", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export async function getPlans() {
     const userId = localStorage.getItem("userId");
     if (!userId) return [];
 
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/plans?userId=${userId}`);
+    const res = await fetch(`http://localhost:8000/plans?userId=${userId}`);
 
     if (!res.ok) throw new Error('User plans could not be loaded');
 
@@ -84,7 +84,7 @@ export async function getPlans() {
 }
 
 export async function getPlan(planId) {
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/plans/${planId}`);
+    const res = await fetch(`http://localhost:8000/plans/${planId}`);
 
     if (!res.ok) throw new Error('User plans could not be loaded');
 
@@ -95,7 +95,7 @@ export async function getPlan(planId) {
 
 // Delete Plan
 export async function deletePlanId(planId) {
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/plans/${planId}`, {
+    const res = await fetch(`http://localhost:8000/plans/${planId}`, {
         method: 'DELETE',
     });
 
@@ -109,7 +109,7 @@ export async function deletePlanId(planId) {
 export async function getGoals(planId) {
 
 
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/goals?planId=${planId}`);
+    const res = await fetch(`http://localhost:8000/goals?planId=${planId}`);
 
     if (!res.ok) throw new Error('User plans could not be loaded');
 
@@ -121,7 +121,7 @@ export async function getGoals(planId) {
 
 // Delete Goal
 export async function deleteGoalApi(goalId) {
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/goals/${goalId}`, {
+    const res = await fetch(`http://localhost:8000/goals/${goalId}`, {
         method: 'DELETE',
     });
 
@@ -132,7 +132,7 @@ export async function deleteGoalApi(goalId) {
 
 // Edit Goal
 export async function editGoalApi(goalId, data) {
-    const res = await fetch(`https://eazy-mart-users-data.onrender.com/goals/${goalId}`, {
+    const res = await fetch(`http://localhost:8000/goals/${goalId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -147,7 +147,7 @@ export async function editGoalApi(goalId, data) {
 
 // Create Goal
 export async function createGoalApi(data) {
-    const res = await fetch("https://eazy-mart-users-data.onrender.com/goals", {
+    const res = await fetch("http://localhost:8000/goals", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
