@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
 		localStorage.removeItem("userId");
 		dispatch({ type: "logout" });
 		window.location.reload();
-		window.location.href = "/login";
+		window.location.href = "https://planner-six-chi.vercel.app/login";
 	}
 
 	return (
