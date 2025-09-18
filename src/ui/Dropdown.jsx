@@ -11,11 +11,14 @@ const StyledDropdown = styled.ul`
 	list-style: none;
 	z-index: 100;
 	width: 120px;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 
 	li {
 		cursor: pointer;
 		border: none;
-		padding: 0.5rem;
 
 		button {
 			background-color: transparent;
