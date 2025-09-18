@@ -46,7 +46,7 @@ function Plans() {
 					) : (
 						<>
 							<h2>
-								{user?.name} has {plans?.length} planned goals
+								{user?.name} has {plans?.length} tracked plans
 							</h2>
 							<PlansList plans={plans} />
 						</>
@@ -94,7 +94,7 @@ function Plans() {
 			</>
 		</Row>
 	) : (
-		<p>
+		<p style={{ padding: "1rem" }}>
 			You have no plans, login to{" "}
 			<Link className='underline' to='/login'>
 				get started

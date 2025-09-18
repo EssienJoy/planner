@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../context/useAuth";
 
+import logo from "../../../public/calendar-logo.avif";
+
 function UserLoginForm() {
 	const [email, setEmail] = useState("ejojo@gmail.com");
 	const [password, setPassword] = useState("sleep123#");
@@ -20,7 +22,7 @@ function UserLoginForm() {
 				height: "100dvh",
 			}}>
 			<UserFormLayout>
-				<Image src='calendar-logo.avif' alt='logo' />
+				<Image src={logo} alt='logo' />
 				<form
 					onSubmit={async (e) => {
 						e.preventDefault();

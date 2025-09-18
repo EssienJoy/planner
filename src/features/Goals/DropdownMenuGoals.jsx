@@ -11,7 +11,7 @@ function DropdownMenuGoals({ goalId, goal }) {
 		<Dropdown>
 			<li>
 				<button onClick={() => deleteGoal(goalId)} disabled={isDeleting}>
-					Delete
+					{isDeleting ? "Deleting..." : "Delete"}
 				</button>
 			</li>
 			<li>Edit</li>

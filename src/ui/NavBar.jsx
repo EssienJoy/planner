@@ -11,6 +11,8 @@ import HarmburgerMenu from "./HarmburgerMenu";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
 
+import logo from "../../public/calendar-logo.avif";
+
 const StyledNavBar = styled.header`
 	padding: 2rem 1rem;
 	box-shadow: 5px 5px 14px #c8c8c8, -5px -5px 14px #ffffff;
@@ -35,7 +37,7 @@ function NavBar() {
 
 	return (
 		<StyledNavBar>
-			<Image src='/calendar-logo.avif' alt='calender logo' />
+			<Image src={logo} alt='calender logo' />
 
 			<Nav />
 

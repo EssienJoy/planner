@@ -13,10 +13,13 @@ const StyledDropdown = styled.ul`
 	width: 120px;
 
 	li {
-		/* margin: 1rem 0; */
 		cursor: pointer;
-		transition: background 0.2s ease;
 		border: none;
+		padding: 0.5rem;
+
+		button {
+			background-color: transparent;
+		}
 	}
 `;
 

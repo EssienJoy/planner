@@ -15,7 +15,7 @@ function PlansList({ plans }) {
 	return (
 		<StyledPlansList>
 			{plans.map((plan) => (
-				<li key={plan.id}>
+				<li className='list' key={plan.id}>
 					<p>{plan.title}</p>
 
 					<Button onClick={() => handleToggleMenu(plan.id)}>
@@ -39,7 +39,7 @@ const StyledPlansList = styled.ul`
 		height: 20rem;
 	}
 
-	li {
+	.list {
 		position: relative;
 		display: grid;
 		grid-template-columns: 3fr 1fr;

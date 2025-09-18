@@ -13,11 +13,16 @@ function Goals({ goals, isLoadingGoal, plan }) {
 	const { editGoal, isPending: isTracking } = useEditGoal();
 	const { user } = useUser();
 	const [selectedId, setSelectedId] = useState(null);
+	const [completedGoal, setIsCompletedGoal] = useState(null);
 
 	const completed = goals?.filter((goal) => goal.completed);
 
 	function handleToggleMenu(id) {
-		setSelectedId((prevId) => (prevId === id ? null : id));
+		setSelectedId((goalId) => (goalId === id ? null : id));
+	}
+
+	function handleCompleting(id) {
+		setIsCompletedGoal(id);
 	}
 
 	return (
@@ -34,11 +39,12 @@ function Goals({ goals, isLoadingGoal, plan }) {
 					<div className='spinner'></div>
 				) : (
 					goals?.map((goal) => (
-						<li key={goal.id}>
+						<li key={goal.id} className='list'>
 							<input
 								type='checkbox'
 								checked={goal.completed}
 								onChange={(e) => {
+									handleCompleting(goal.id);
 									editGoal(
 										{
 											goalId: goal.id,
@@ -53,11 +59,10 @@ function Goals({ goals, isLoadingGoal, plan }) {
 												toast.error(`Error tracking goal ${err}`),
 										}
 									);
-									handleToggleMenu(goal.id);
 								}}
 								disabled={
 									goal.completed === true ||
-									(selectedId === goal.id && isTracking)
+									(completedGoal === goal.id && isTracking)
 								}
 							/>
 							<p>{goal.text}</p>
@@ -82,7 +87,7 @@ const Ul = styled.ul`
 	height: 50dvh;
 	padding: 0 1rem;
 
-	li {
+	.list {
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -105,7 +110,7 @@ const Ul = styled.ul`
 
 	@media screen and (max-width: 550px) {
 		padding: 0;
-		li {
+		/list {
 			gap: 1rem;
 			input {
 				height: 1.5rem;
