@@ -1,12 +1,59 @@
-# React + Vite
+# Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Planner is a React web app with a neumorphic UI that helps users track events and set actionable goals leading up to them.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## About the Project
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+After completing the React section of Jonas Schmedtmann’s course, I designed and developed Planner from scratch using Styled Components and React. The app features a modern neumorphic interface, intuitive state management, and modular component architecture. Users can create events, set goals toward each event, and visually track their progress in an organized and engaging way.
+
+## Features
+- 🔥 Track Plans.
+- ✔️ Check completed goals.
+- 🔔 Get reminders.
+
+## Tech Stack
+- HTML5
+- Styled components
+- React
+- Redux
+- Json server
+
+  ## Installation
+
+Step-by-step instructions for running the project locally.
+
+1. Clone the repo
+   ```bash
+   git clone https://github.com/your-username/project-name.git
+
+
+2. Navigate to the folder
+
+cd project-name
+
+
+3. Install dependencies
+
+npm install
+
+
+4. Run the project
+
+npm run dev**
+
+[Live Demo](https://planner-six-chi.vercel.app/)
+
+## Contributing
+Contributions are welcome! Please fork the repo and submit a pull request.
+
