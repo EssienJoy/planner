@@ -7,10 +7,8 @@ Planner is a React web app with a neumorphic UI that helps users track events an
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 
 ## About the Project
