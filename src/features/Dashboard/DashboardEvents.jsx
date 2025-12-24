@@ -1,12 +1,8 @@
-// import styled from "styled-components";
 import { format } from "date-fns";
 import { useSelector } from "react-redux";
 
 import Image from "../../ui/Image";
 import Clock from "../../ui/Clock";
-import BoxShadow from "../../ui/BoxShadow";
-import Row from "../../ui/Row";
-import SunkenLayout from "../../ui/SunkenLayout";
 import { usePlans } from "../../hooks/usePlans";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
@@ -18,25 +14,19 @@ function DashboardEvents() {
 	const currentDate = useSelector((store) => store.date.currentDate);
 
 	return (
-		<Row type='vertical' style={{ flexGrow: "1" }}>
-			<BoxShadow
-				style={{
-					display: "flex",
-					alignItems: "center",
-					justifyItems: "center",
-					gap: "1rem",
-				}}>
+		<section className='flex flex-col gap-3 grow'>
+			<div className='flex items-center  gap-4'>
 				<Clock />
 
-				<BoxShadow>
+				<div className='custom-shadow rounded-2xl p-4'>
 					<Image src='notification.jpg' alt='Notificatio Icon' />
 					<p>{format(currentDate, "p")}</p>
-					<p>{format(currentDate, "EEE, MMM d, yy")}</p>
-				</BoxShadow>
-			</BoxShadow>
+					<p>{format(currentDate, " MMM d, yy")}</p>
+				</div>
+			</div>
 
-			<BoxShadow style={{ height: "12rem" }}>
-				<h2>Tracked Plans</h2>
+			<div className='custom-shadow h-48 rounded-4xl p-4'>
+				<h2 className='text-xl font-bold'>Tracked Plans</h2>
 				{isAuthenticated ? (
 					plans?.length ? (
 						<ul>
@@ -44,16 +34,18 @@ function DashboardEvents() {
 								<div className='spinner'></div>
 							) : (
 								plans?.slice(0, 2).map((plan) => (
-									<SunkenLayout as='li' key={plan.id}>
+									<li
+										className='sunken-shadow py-2 px-4 rounded-2xl font-bold my-3 '
+										key={plan.id}>
 										{plan.title}
-									</SunkenLayout>
+									</li>
 								))
 							)}
 						</ul>
 					) : (
 						<p>
 							Your tracked plans are empty, create a plan{" "}
-							<Link to='/plansPage' className='underline'>
+							<Link to='/plans' className='underline'>
 								now
 							</Link>
 						</p>
@@ -66,8 +58,8 @@ function DashboardEvents() {
 						</Link>
 					</p>
 				)}
-			</BoxShadow>
-		</Row>
+			</div>
+		</section>
 	);
 }
 

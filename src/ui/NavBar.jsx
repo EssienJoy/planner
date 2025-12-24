@@ -1,67 +1,53 @@
-import styled from "styled-components";
-
 import Nav from "./Nav";
 import Image from "./Image";
-import SunkenLayout from "./SunkenLayout";
-import StyledLists from "./StyledLists";
 import { IoEnter } from "react-icons/io5";
 import { useAuth } from "../context/useAuth";
-import { useUser } from "../hooks/useUser";
 import HarmburgerMenu from "./HarmburgerMenu";
 import MobileNav from "./MobileNav";
 import { useState } from "react";
+import { HiOutlineLogout } from "react-icons/hi";
 
 import logo from "../../public/calendar-logo.avif";
-
-const StyledNavBar = styled.header`
-	padding: 2rem 1rem;
-	box-shadow: 5px 5px 14px #c8c8c8, -5px -5px 14px #ffffff;
-	border-radius: 5rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-weight: 500;
-	margin-bottom: 2rem;
-
-	@media (max-width: 550px) {
-		padding: 1rem;
-		margin-bottom: 1rem;
-	}
-`;
+import Container from "./Container";
+import Button from "./Button";
+import Link from "./Link";
 
 function NavBar() {
-	const { isAuthenticated } = useAuth();
-	const { user } = useUser();
+	const { isAuthenticated, logout } = useAuth();
 
 	const [toggleMenu, setIsToggleMenu] = useState(false);
 
 	return (
-		<StyledNavBar>
-			<Image src={logo} alt='calender logo' />
+		<header className=''>
+			<Container className='flex justify-between custom-shadow items-center px-4 py-6'>
+				<Image src={logo} alt='calender logo' />
 
-			<Nav />
+				<Nav />
 
-			<MobileNav toggleMenu={toggleMenu} setIsToggleMenu={setIsToggleMenu} />
+				<MobileNav toggleMenu={toggleMenu} setIsToggleMenu={setIsToggleMenu} />
 
-			<div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-				<HarmburgerMenu
-					setIsToggleMenu={setIsToggleMenu}
-					toggleMenu={toggleMenu}
-				/>
+				<div className='flex items-center gap-2'>
+					<HarmburgerMenu
+						setIsToggleMenu={setIsToggleMenu}
+						toggleMenu={toggleMenu}
+					/>
 
-				{isAuthenticated ? (
-					<div style={{ display: "flex", gap: "1rem" }}>
-						<SunkenLayout as='p'>Hi, {user?.name}</SunkenLayout>
-						<Image src='/default-user.jpg' alt='User avatar' />
-					</div>
-				) : (
-					<StyledLists to='/signup'>
-						<p>Sign up</p>
-						<IoEnter size='1.5rem' />
-					</StyledLists>
-				)}
-			</div>
-		</StyledNavBar>
+					{isAuthenticated ? (
+						<Button
+							className='hidden sm:flex items-center gap-1'
+							onClick={logout}>
+							<HiOutlineLogout />
+							<span>Logout </span>
+						</Button>
+					) : (
+						<Link to='/signup' className='text-lg font-bold'>
+							<p>Sign up</p>
+							<IoEnter size='1.5rem' />
+						</Link>
+					)}
+				</div>
+			</Container>
+		</header>
 	);
 }
 

@@ -1,44 +1,13 @@
-import styled from "styled-components";
-
-function Button({ children, disabled, onClick }) {
+function Button({ children, disabled, onClick, className = "" }) {
 	return (
-		<ButtonComponent disabled={disabled} onClick={onClick}>
+		<button
+			className={`py-2 px-4 ${className}
+			 bg-primary border-none rounded-xl custom-button-shadow font-bold`}
+			disabled={disabled}
+			onClick={onClick}>
 			{children}
-		</ButtonComponent>
+		</button>
 	);
 }
 
 export default Button;
-
-const ButtonComponent = styled.button`
-	background-color: var(--color-primary);
-	border: none;
-	border-radius: 12px;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	font-weight: 600;
-	font-size: 1rem;
-
-	box-shadow: inset -5px -5px 14px #a8a8a8, inset 5px 5px 14px #ffffff;
-
-	&:hover {
-		box-shadow: inset -5px -5px 14px #ffffff,
-			inset 5px 5px 14px rgb(168, 168, 168);
-	}
-
-	&:active {
-		box-shadow: inset -5px -5px 14px #ffffff, inset 5px 5px 14px #a8a8a8;
-	}
-
-	&:disabled {
-		cursor: not-allowed;
-		opacity: 0.6;
-		box-shadow: none;
-		background-color: #ccc;
-	}
-
-	@media (max-width: 450px) {
-		font-size: 0.85rem;
-	}
-`;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Clock = () => {
 	return (
-		<StyledWrapper>
+		<StyledWrapper className='hidden md:block'>
 			<div className='card'>
 				<div className='numbers'>
 					<span className='number' />

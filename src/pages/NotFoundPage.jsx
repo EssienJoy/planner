@@ -1,18 +1,20 @@
-import styled from "styled-components";
-
-const StyledPageNotFound = styled.section`
-	height: 100dvh;
-	display: grid;
-	place-items: center;
-	font-weight: 600;
-	font-size: 3rem;
-`;
+import { Link } from "react-router-dom";
+import Container from "../ui/Container";
 
 function NotFoundPage() {
 	return (
-		<StyledPageNotFound>
-			<p>This site does not exist 😒</p>
-		</StyledPageNotFound>
+		<Container className='grid place-items-center text-text-black h-dvh '>
+			<div className='flex flex-col gap-3 items-center custom-shadow p-4 rounded-3xl'>
+				<p className='text-sm sm:text-2xl font-bold uppercase'>
+					This Page does not exist
+				</p>
+				<Link
+					className='custom-button-shadow py-2 px-4 rounded-2xl font-bold'
+					to='/'>
+					Home
+				</Link>
+			</div>
+		</Container>
 	);
 }
 

@@ -1,7 +1,6 @@
-import PlanLayOut from "../features/Plans/PlanLayOut";
-
-function Plans() {
-	return <PlanLayOut />;
+import Plans from "../features/plans/Plans";
+function PlansPage() {
+	return <Plans />;
 }
 
-export default Plans;
+export default PlansPage;

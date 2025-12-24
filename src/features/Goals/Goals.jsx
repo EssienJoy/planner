@@ -5,13 +5,11 @@ import styled from "styled-components";
 import Button from "../../ui/Button";
 import DropdownMenuGoals from "./DropdownMenuGoals";
 import { useEditGoal } from "../../hooks/useEditGoal";
-import { useUser } from "../../hooks/useUser";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
 
 function Goals({ goals, isLoadingGoal, plan }) {
 	const { editGoal, isPending: isTracking } = useEditGoal();
-	const { user } = useUser();
 	const [selectedId, setSelectedId] = useState(null);
 	const [completedGoal, setIsCompletedGoal] = useState(null);
 
@@ -27,20 +25,23 @@ function Goals({ goals, isLoadingGoal, plan }) {
 
 	return (
 		<>
-			<Div>
+			<div className='flex items-center justify-between font-bold text-md sm:text-xl  gap-3 flex-wrap my-3'>
 				<h3>
-					{user?.name} Completed {completed?.length || 0} Goal
+					You Completed <span>{completed?.length || 0}</span> Goals
 				</h3>
 				<h3> {format(new Date(plan?.dateCreated), "MMM do")}</h3>
-			</Div>
+			</div>
 
 			<Ul>
 				{isLoadingGoal ? (
 					<div className='spinner'></div>
 				) : (
 					goals?.map((goal) => (
-						<li key={goal.id} className='list'>
+						<li
+							key={goal.id}
+							className='py-3 px-2 my-5 relative flex items-center gap-5 rounded-2xl border-b-2 border-b-[#cececf]'>
 							<input
+								className='w-4 h-4 shrink-0 sm:w-8 sm:h-8'
 								type='checkbox'
 								checked={goal.completed}
 								onChange={(e) => {
@@ -65,8 +66,10 @@ function Goals({ goals, isLoadingGoal, plan }) {
 									(completedGoal === goal.id && isTracking)
 								}
 							/>
-							<p>{goal.text}</p>
-							<Button onClick={() => handleToggleMenu(goal.id)}>
+							<p className='text-xs sm:text-lg grow'>{goal.text}</p>
+							<Button
+								className='justify-self-center'
+								onClick={() => handleToggleMenu(goal.id)}>
 								<HiOutlineDotsVertical />
 							</Button>
 							{selectedId === goal.id && (
@@ -116,22 +119,6 @@ const Ul = styled.ul`
 				height: 1.5rem;
 				width: 1.5rem;
 			}
-		}
-	}
-`;
-
-const Div = styled.div`
-	display: flex;
-	justify-content: space-between;
-	gap: 0.5rem;
-	flex-wrap: wrap;
-	font-weight: bold;
-	margin: 2rem 0;
-
-	@media screen and (max-width: 550px) {
-		margin: 1rem 0;
-		h3 {
-			padding: 0;
 		}
 	}
 `;

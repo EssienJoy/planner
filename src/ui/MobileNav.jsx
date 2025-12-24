@@ -4,7 +4,7 @@ import { HiOutlineHome, HiCalendarDays } from "react-icons/hi2";
 import { HiOutlineLogin, HiOutlineLogout } from "react-icons/hi";
 
 import { useAuth } from "../context/useAuth";
-import StyledLists from "./StyledLists";
+import StyledLists from "./Link";
 import Button from "./Button";
 
 const StyledUl = styled.nav`
@@ -51,7 +51,7 @@ function MobileNav({ toggleMenu, setIsToggleMenu }) {
 				<span>Home</span>
 			</StyledLists>
 
-			<StyledLists to='/plansPage'>
+			<StyledLists to='/plans'>
 				<HiCalendarDays />
 				<span>Plans</span>
 			</StyledLists>

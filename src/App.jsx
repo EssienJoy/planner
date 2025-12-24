@@ -7,22 +7,22 @@ import { Toaster } from "react-hot-toast";
 import store from "./Store/store";
 import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home";
-import Plans from "./pages/PlansPage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Form from "./pages/Form";
-import ViewGoals from "./pages/ViewGoals";
+import Goals from "./pages/Goals";
 import Signup from "./pages/Signup";
 import SuccessfulSignup from "./pages/SuccessfulSignup";
 import { AuthProvider } from "./context/FakeAuthContext";
+import PlansPage from "./pages/PlansPage";
 
 const router = createBrowserRouter([
 	{
 		element: <AppLayout />,
 		children: [
 			{ path: "/", element: <Home /> },
-			{ path: "/plans", element: <Plans /> },
-			{ path: "/plans/:planId", element: <ViewGoals /> },
+			{ path: "/plans", element: <PlansPage /> },
+			{ path: "/plans/:planId", element: <Goals /> },
 			{ path: "/form", element: <Form /> },
 		],
 	},

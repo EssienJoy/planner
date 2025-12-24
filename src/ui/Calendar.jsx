@@ -13,17 +13,20 @@ import {
 	subYears,
 } from "date-fns";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi2";
-import styled from "styled-components";
 
 import Button from "./Button";
 import { setDate } from "../Slice/dateSlice";
-import BoxShadow from "./BoxShadow";
 
-const weekdays = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"];
+const weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
 // Calendar
-function Calendar({ children }) {
-	return <section>{children}</section>;
+function Calendar({ children, className = "" }) {
+	return (
+		<section
+			className={`custom-shadow p-4 rounded-2xl sm:rounded-4xl ${className}`}>
+			{children}
+		</section>
+	);
 }
 
 // Months
@@ -44,7 +47,8 @@ function Months() {
 	];
 
 	return (
-		<Select
+		<select
+			className='bg-primary rounded-2xl custom-button-shadow font-bold border-none outline-none py-2 px-4'
 			onChange={(e) => {
 				const selectedMonth = new Date(e.target.value);
 				dispatch(setDate(selectedMonth.toISOString()));
@@ -60,7 +64,7 @@ function Months() {
 					{format(month, "LLLL")}
 				</option>
 			))}
-		</Select>
+		</select>
 	);
 }
 
@@ -105,13 +109,15 @@ function Grid() {
 	const lastDayOfMonth = endOfMonth(currentDate);
 
 	return (
-		<CalenderLayout className='calendar-layout'>
+		<div className=' grid grid-cols-7 gap-2 sm:gap-4 font-bold'>
 			{weekdays.map((day) => (
-				<p key={day}>{day}</p>
+				<p className='text-center text-sm sm:text-lg' key={day}>
+					{day}
+				</p>
 			))}
 
 			{Array.from({ length: getDay(firstDayOfMonth) || 7 }).map((_, index) => (
-				<p key={`empty-${index}`} />
+				<p className='text-center text-sm sm:text-lg' key={`empty-${index}`} />
 			))}
 
 			{eachDayOfInterval({
@@ -123,12 +129,16 @@ function Grid() {
 						currentDate,
 					day
 				) ? (
-					<Active key={index}>{format(day, "d")}</Active>
+					<p className='sunken-shadow p-1 text-center rounded-2xl' key={index}>
+						{format(day, "d")}
+					</p>
 				) : (
-					<p key={index}>{format(day, "d")}</p>
+					<p className='text-center text-sm sm:text-lg' key={index}>
+						{format(day, "d")}
+					</p>
 				)
 			)}
-		</CalenderLayout>
+		</div>
 	);
 }
 
@@ -139,40 +149,3 @@ Calendar.NavRight = NavRight;
 Calendar.Grid = Grid;
 
 export default Calendar;
-
-const CalenderLayout = styled.div`
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	gap: 1rem;
-	padding: 1rem;
-	font-weight: 600;
-
-	@media (max-width: 450px) {
-		padding: 0;
-		gap: 0.5rem;
-	}
-
-	p {
-		text-align: center;
-	}
-`;
-
-const Active = styled.p`
-	box-shadow: inset -5px -5px 14px #ffffff, inset 5px 5px 14px #a8a8a8;
-	padding: 0.25rem;
-	box-sizing: border-box;
-	border-radius: 1rem;
-	text-align: center;
-`;
-
-const Select = styled.select`
-	background-color: var(--color-primary);
-	border: none;
-	border-radius: 1rem;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	font-weight: 600;
-	outline: none;
-	box-shadow: inset -5px -5px 14px #a8a8a8, inset 5px 5px 14px #ffffff;
-`;

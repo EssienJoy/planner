@@ -1,54 +1,45 @@
-import styled from "styled-components";
 import { HiOutlineHome, HiCalendarDays } from "react-icons/hi2";
-import { HiOutlineLogin, HiOutlineLogout } from "react-icons/hi";
-import { useAuth } from "../context/useAuth";
-import StyledLists from "./StyledLists";
-import Button from "./Button";
+import { HiOutlineLogin } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
-const StyledUl = styled.nav`
-	display: flex;
-	gap: 2rem;
-	list-style: none;
-	font-size: 1.2rem;
-	font-weight: 500;
-
-	@media (max-width: 850px) {
-		display: none;
-	}
-
-	button {
-		display: flex;
-		align-items: center;
-		gap: 0.25rem;
-	}
-`;
+const url = [
+	{
+		icon: HiOutlineHome,
+		text: "Home",
+		href: "/",
+	},
+	{
+		icon: HiCalendarDays,
+		text: "Plans",
+		href: "/plans",
+	},
+	{
+		icon: HiOutlineLogin,
+		text: "login",
+		href: "/login",
+	},
+];
 
 function Nav() {
-	const { isAuthenticated, logout } = useAuth();
-
 	return (
-		<StyledUl>
-			<StyledLists to='/'>
-				<HiOutlineHome />
-				<span>Home</span>
-			</StyledLists>
+		<nav className='sm:flex items-center gap-3 hidden '>
+			<ul className='flex gap-8 items-center'>
+				{url.map((link) => {
+					const Icon = link.icon;
 
-			<StyledLists to='/plans'>
-				<HiCalendarDays />
-				<span>Plans</span>
-			</StyledLists>
-			{isAuthenticated ? (
-				<Button onClick={logout}>
-					<HiOutlineLogout />
-					<span>Logout </span>
-				</Button>
-			) : (
-				<StyledLists to='/login'>
-					<HiOutlineLogin />
-					<span>login</span>
-				</StyledLists>
-			)}
-		</StyledUl>
+					return (
+						<li key={link.href}>
+							<Link
+								className='flex items-center gap-2 text-lg font-bold'
+								to={link.href}>
+								<Icon />
+								<span>{link.text}</span>
+							</Link>
+						</li>
+					);
+				})}
+			</ul>
+		</nav>
 	);
 }
 

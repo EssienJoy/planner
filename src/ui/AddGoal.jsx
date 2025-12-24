@@ -1,7 +1,5 @@
-import styled from "styled-components";
 import { HiCheck } from "react-icons/hi";
 
-import BoxShadow from "./BoxShadow";
 import Button from "./Button";
 import { useState } from "react";
 import { useCreateGoal } from "../hooks/useCreateGoal";
@@ -27,52 +25,24 @@ function Input({ goals, planId }) {
 		);
 	}
 	return (
-		<BoxShadow>
-			<Form onSubmit={handleSubmit}>
-				<textarea
-					name='observations'
-					id='observations'
-					placeholder='start tracking your goals today...'
-					value={goal}
-					onChange={(e) => setGoal(e.target.value)}></textarea>
+		<form
+			className='custom-shadow p-2 flex flex-col sm:flex-row gap-5 items-center  rounded-2xl sm:rounded-4xl sm:p-4'
+			onSubmit={handleSubmit}>
+			<textarea
+				className=' border w-full sm:w-[60%] rounded-3xl p-3 sm:p-6 text-sm sm:text-lg focus:outline-none '
+				name='observations'
+				id='observations'
+				placeholder='start tracking your goals today...'
+				value={goal}
+				onChange={(e) => setGoal(e.target.value)}></textarea>
 
-				<Button disabled={isCreating}>
-					<span>{goals?.length}</span> <HiCheck />
-				</Button>
-			</Form>
-		</BoxShadow>
+			<Button
+				className='flex self-start  items-center sm:self-center'
+				disabled={isCreating}>
+				<span>{goals?.length}</span> <HiCheck />
+			</Button>
+		</form>
 	);
 }
 
 export default Input;
-
-const Form = styled.form`
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-
-	button {
-		align-self: center;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	textarea {
-		outline: none;
-		width: 500px;
-		border-radius: 2rem;
-		padding: 1rem 2rem;
-		height: 5rem;
-		resize: none;
-		background-color: transparent;
-	}
-
-	@media screen and (max-width: 550px) {
-		textarea {
-			border-radius: 1rem;
-			height: 4rem;
-			padding: 1.5rem 0.5rem;
-		}
-	}
-`;

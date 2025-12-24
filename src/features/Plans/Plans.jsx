@@ -1,7 +1,3 @@
-import BoxShadow from "../../ui/BoxShadow";
-import styled from "styled-components";
-import Row from "../../ui/Row";
-
 import { usePlans } from "../../hooks/usePlans";
 import Calendar from "../../ui/Calendar";
 import PlansList from "./PlansList";
@@ -12,6 +8,7 @@ import { HiCheck } from "react-icons/hi2";
 import { useState } from "react";
 import { useCreatePlan } from "../../hooks/useCreatePlan";
 import { useUser } from "../../hooks/useUser";
+import Container from "../../ui/Container";
 
 function Plans() {
 	const [plan, setCreatePlan] = useState("");
@@ -41,61 +38,74 @@ function Plans() {
 	}
 
 	return isAuthenticated ? (
-		<Row type='horizontal'>
-			<>
-				<StyledPlansContainer>
-					{isLoading ? (
-						<div className='spinner'></div>
-					) : (
-						<>
-							<h2>
-								{user?.name} has {plans?.length} tracked plans
-							</h2>
-							<PlansList plans={plans} />
-						</>
-					)}
-				</StyledPlansContainer>
+		<Container className=' mt-5 flex flex-col lg:flex-row gap-5 '>
+			<div className='custom-shadow h-dvh rounded-2xl sm:rounded-4xl p-4  lg:w-1/2'>
+				{!plans ? (
+					<p className='text-lg font-bold'>
+						Tracked plans is empty,create a new plan.{" "}
+					</p>
+				) : isLoading ? (
+					<div className='spinner'></div>
+				) : (
+					<>
+						<h2 className='text-xl font-bold'>
+							{user?.name} has {plans?.length} tracked plans
+						</h2>
+						<PlansList plans={plans} />
+					</>
+				)}
+			</div>
 
-				<Row type='vertical'>
-					<StyledWrapper>
-						<form onSubmit={handleSubmit}>
-							<label htmlFor='plans'>Create a plan</label>
-							<div className='textarea-row'>
-								<TextArea
-									name='plans'
-									id='plans'
-									placeholder='Write your plan here...'
-									value={plan}
-									required
-									onChange={(e) => setCreatePlan(e.target.value)}
-								/>
-								<Button type='submit' disabled={isCreating}>
-									<HiCheck />
-									{isCreating ? "creating..." : "Add"}
-								</Button>
-							</div>
+			<div className='flex flex-col gap-5 lg:w-1/2'>
+				<form
+					onSubmit={handleSubmit}
+					className='custom-shadow rounded-2xl sm:rounded-4xl p-4 sm:p-10 flex flex-col gap-7'>
+					<label
+						htmlFor='plans'
+						className='text-md sm:text-lg font-bold text-[#676767]'>
+						Create a plan
+					</label>
+					<div className='flex flex-col sm:flex-row  gap-5 sm:items-center'>
+						<textArea
+							className='bg-white p-4 grow rounded-2xl h-20 text-sm sm:text-lg'
+							name='plans'
+							id='plans'
+							placeholder='Write your plan here...'
+							value={plan}
+							required
+							onChange={(e) => setCreatePlan(e.target.value)}
+						/>
+						<Button
+							type='submit'
+							disabled={isCreating}
+							className='flex items-center self-start sm:self-center gap-2 text-sm'>
+							<HiCheck />
+							{isCreating ? "creating..." : "Add"}
+						</Button>
+					</div>
 
-							<div className='date-row'>
-								<label htmlFor='date'>Select a date</label>
-								<input
-									type='date'
-									id='date'
-									value={date}
-									onChange={(e) => setDate(e.target.value)}
-									required
-								/>
-							</div>
-						</form>
-					</StyledWrapper>
+					<div className='flex flex-col gap-2'>
+						<label
+							className='text-md sm:text-lgfont-bold text-[#676767]'
+							htmlFor='date'>
+							Select a date
+						</label>
+						<input
+							className='bg-white p-4 rounded-2xl text-sm sm:text-lg'
+							type='date'
+							id='date'
+							value={date}
+							onChange={(e) => setDate(e.target.value)}
+							required
+						/>
+					</div>
+				</form>
 
-					<Calendar>
-						<BoxShadow>
-							<Calendar.Grid />
-						</BoxShadow>
-					</Calendar>
-				</Row>
-			</>
-		</Row>
+				<Calendar>
+					<Calendar.Grid />
+				</Calendar>
+			</div>
+		</Container>
 	) : (
 		<p style={{ padding: "1rem" }}>
 			You have no plans, login to{" "}
@@ -107,89 +117,3 @@ function Plans() {
 }
 
 export default Plans;
-
-const StyledWrapper = styled(BoxShadow)`
-	form {
-		padding: 1.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	label {
-		font-weight: 600;
-		color: #555;
-		margin-bottom: 0.25rem;
-	}
-
-	.textarea-row {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.date-row {
-		display: flex;
-		flex-direction: column;
-	}
-
-	input[type="date"] {
-		padding: 0.75rem 1rem;
-		border-radius: 1rem;
-		border: 1px solid #ccc;
-		background: #fafafa;
-		transition: border 0.2s;
-		outline: none;
-
-		&:focus {
-			border-color: #4f46e5;
-		}
-	}
-
-	@media (max-width: 550px) {
-		form {
-			padding: 0.5rem;
-		}
-
-		.textarea-row {
-			display: flex;
-			align-items: stretch;
-			flex-direction: column;
-
-			button {
-				align-self: start;
-			}
-		}
-
-		input[type="date"] {
-			padding: 0.5rem 1rem;
-		}
-	}
-`;
-
-const TextArea = styled.textarea`
-	flex: 1;
-	outline: none;
-	border: 1px solid #ccc;
-	border-radius: 1rem;
-	padding: 1rem 1.25rem;
-	height: 5rem;
-	resize: none;
-	background-color: #fafafa;
-	transition: border 0.2s, box-shadow 0.2s;
-
-	&:focus {
-		border-color: #4f46e5;
-		box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-	}
-`;
-
-const StyledPlansContainer = styled(BoxShadow)`
-	flex-grow: 1;
-
-	h2 {
-		font-weight: bold;
-		font-size: 1.25rem;
-		padding: 0.5rem;
-	}
-`;

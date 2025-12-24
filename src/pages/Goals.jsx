@@ -1,7 +1,7 @@
 import GoalsLayout from "../features/Goals/GoalsLayout";
 
-function ViewPlanGoals() {
+function Goals() {
 	return <GoalsLayout />;
 }
 
-export default ViewPlanGoals;
+export default Goals;

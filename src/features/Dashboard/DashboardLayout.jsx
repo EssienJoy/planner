@@ -1,45 +1,27 @@
 import DashboardEvents from "./DashboardEvents";
-import Row from "../../ui/Row";
 import Calendar from "../../ui/Calendar";
-import BoxShadow from "../../ui/BoxShadow";
 import Footer from "../../ui/Footer";
+import Container from "../../ui/Container";
 
 function DashboardLayout() {
 	return (
 		<>
-			<Row type='horizontal'>
+			<Container className='my-5 flex flex-col  md:flex-row gap-5'>
 				<DashboardEvents />
 
-				<Calendar>
-					<BoxShadow>
-						<Row type='vertical'>
-							<div
-								style={{
-									display: "flex",
-									flexWrap: "wrap",
-									alignItems: "center",
-									justifyContent: "space-between",
-									gap: "1rem",
-									padding: "1rem",
-								}}>
-								<Calendar.Months />
+				<Calendar className='grow'>
+					<div className='flex flex-wrap gap-1 justify-between items-center my-5 '>
+						<Calendar.Months />
 
-								<div
-									style={{
-										display: "flex",
-										alignItems: "center",
-										gap: "1rem",
-									}}>
-									<Calendar.NavLeft />
-									<Calendar.Year />
-									<Calendar.NavRight />
-								</div>
-							</div>
-							<Calendar.Grid />
-						</Row>
-					</BoxShadow>
+						<div className='flex items-center gap-4 p-3'>
+							<Calendar.NavLeft />
+							<Calendar.Year />
+							<Calendar.NavRight />
+						</div>
+					</div>
+					<Calendar.Grid />
 				</Calendar>
-			</Row>
+			</Container>
 			<Footer />
 		</>
 	);

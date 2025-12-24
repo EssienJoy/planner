@@ -1,6 +1,5 @@
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useState } from "react";
-import styled from "styled-components";
 
 import Button from "../../ui/Button";
 import DropdownMenuPlans from "./DropdownMenuPlans";
@@ -13,49 +12,21 @@ function PlansList({ plans }) {
 	}
 
 	return (
-		<StyledPlansList>
-			{plans.map((plan) => (
-				<li className='list' key={plan.id}>
-					<p>{plan.title}</p>
+		<ul className='sm:px-4 h-80  sm:h-120'>
+			{plans?.map((plan) => (
+				<li
+					className='py-3 px-2 my-5 relative flex items-center gap-5 rounded-2xl border-b-2 border-b-[#cececf]'
+					key={plan.id}>
+					<p className='text-sm sm:text-lg grow'>{plan.title}</p>
 
-					<Button onClick={() => handleToggleMenu(plan.id)}>
+					<Button className='' onClick={() => handleToggleMenu(plan.id)}>
 						<HiOutlineDotsVertical />
 					</Button>
 					{selectedId === plan.id && <DropdownMenuPlans planId={plan.id} />}
 				</li>
 			))}
-		</StyledPlansList>
+		</ul>
 	);
 }
 
 export default PlansList;
-
-const StyledPlansList = styled.ul`
-	padding: 0 1rem;
-	overflow-y: scroll;
-	height: 30rem;
-
-	@media screen and (max-width: 1000px) {
-		height: 20rem;
-	}
-
-	.list {
-		position: relative;
-		display: grid;
-		grid-template-columns: 3fr 1fr;
-		gap: 1rem;
-		border-radius: 1rem;
-		padding: 0.5rem;
-		margin: 1rem 0;
-		border-bottom: 2px solid #cececf;
-
-		button {
-			align-self: center;
-			justify-self: center;
-		}
-	}
-
-	@media (max-width: 550px) {
-		padding: 0;
-	}
-`;
