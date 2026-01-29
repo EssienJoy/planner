@@ -72,12 +72,12 @@ export async function login(user) {
         body: JSON.stringify(user),
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-        console.log(data);
-        throw new Error(data.message);
+    const result = await res.json();
+    if (result.status !== 'success') {
+        console.log(result);
+        throw new Error(result.message);
     }
-    return data ?? {};
+    return result ?? {};
 }
 
 //Update Password
@@ -108,10 +108,10 @@ export async function updateCurrentUserPassword(data) {
         body: JSON.stringify(data),
     });
 
-    const updatedData = await res.json();
-    if (!res.ok) {
+    const result = await res.json();
+    if (result.status !== 'success') {
 
-        throw new Error(updatedData.message);
+        throw new Error(result.message);
     }
     return {};
 }
@@ -131,11 +131,11 @@ export async function forgotPassword(email) {
         body: JSON.stringify(email),
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-        throw new Error(data.message);
+    const result = await res.json();
+    if (!result.status !== 'success') {
+        throw new Error(result.message);
     }
-    return data;
+    return result;
 }
 
 //logout

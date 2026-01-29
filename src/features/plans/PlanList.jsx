@@ -8,7 +8,7 @@ import { format } from "date-fns";
 
 function PlanList({ id }) {
 	const { plans, isLoading } = usePlans(id);
-	// console.log(plans);
+	console.log(plans);
 	const { deletePlan } = useDeletePlan();
 	// console.log(id);
 	// console.log(plans);
@@ -34,7 +34,7 @@ function PlanList({ id }) {
 							</div>
 							<p>2 tasks Completed</p>
 							<div className='flex justify-between gap-2 items-center'>
-								<p className='text-xs'>{format(plan.createdAt, "MMM yyyy")}</p>
+								<p className='text-xs'>{format(plan?.createdAt, "MMM yyyy")}</p>
 								<div className='flex gap-2'>
 									<button
 										onClick={() => deletePlan(plan._id)}

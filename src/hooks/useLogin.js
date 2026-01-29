@@ -15,9 +15,7 @@ export function useLogin() {
             navigate("/");
         },
         onError: (err) => {
-            if (err.message.startsWith('Failed')) {
-                return toast.error('Check Internet connection');
-            }
+
             toast.error(err.message);
         },
     });

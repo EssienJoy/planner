@@ -7,7 +7,7 @@ function LoginForm() {
 	const { login, isPending: loading } = useLogin();
 
 	return (
-		<section className='grid place-items-center h-dvh px-3 '>
+		<section className='grid place-items-center h-dvh'>
 			<div className='w-full bg-secondary text-primary sm:w-1/2 mx-auto grid place-items-center gap-12 rounded-3xl custom-shadow px-3 py-6'>
 				<Image
 					src='/img/png/calendar-logo.avif'

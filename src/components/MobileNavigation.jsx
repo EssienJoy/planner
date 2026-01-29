@@ -23,7 +23,7 @@ const navList = [
 function MobileNavigation() {
 	const { toggleShowForm } = useTogglePlan();
 	return (
-		<footer className='sm:mt-25 mt-10 '>
+		<footer className='sm:mt-25 sm:hidden mt-10 '>
 			<Container
 				className=' relative 
 		'>

@@ -15,7 +15,7 @@ function ResetPasswordForm() {
 	};
 	return (
 		<Container className='grid place-items-center h-dvh'>
-			<div className='shadow-[10px_10px_20px_#d4d3d3,-4px_-4px_20px_#ffffff] w-full sm:w-1/2 p-4 rounded-3xl'>
+			<div className='w-full bg-secondary text-primary sm:w-1/2 p-4 rounded-3xl'>
 				<GoBackNavigation />
 
 				<form className='rounded-lg h-70' onSubmit={handleSubmit}>
@@ -33,7 +33,12 @@ function ResetPasswordForm() {
 						/>
 					</div>
 
-					<Button className='mx-auto block' type='submit' disabled={isPending}>
+					<Button
+						className='mx-auto block'
+						type='submit'
+						bg='bg-primary'
+						text='text-secondary'
+						disabled={isPending}>
 						{isPending ? "checking details..." : "Reset"}
 					</Button>
 				</form>

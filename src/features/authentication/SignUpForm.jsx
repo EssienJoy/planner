@@ -14,7 +14,7 @@ function SignUpForm() {
 	};
 
 	return (
-		<section className='grid place-items-center h-dvh px-3'>
+		<section className='grid place-items-center h-dvh '>
 			<div className='bg-secondary text-primary w-full sm:w-1/2 px-4 py-8 rounded-3xl'>
 				<GoBackNavigation />
 
