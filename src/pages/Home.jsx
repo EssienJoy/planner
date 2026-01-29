@@ -1,7 +1,7 @@
-import DashboardLayout from "../features/Dashboard/DashboardLayout";
+import PlanLayout from "../features/plans/PlanLayout";
 
 function Home() {
-	return <DashboardLayout />;
+	return <PlanLayout />;
 }
 
 export default Home;

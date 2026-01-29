@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #fff;
+    --color-secondary: #000;
+    --color-text-black: #000;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--color-primary);
+    font-size: 1rem;
+    color: var(--color-text-black);
+}
+
+button,
+a,
+select {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--color-primary);
+    animation: spin 1.2s linear infinite, pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

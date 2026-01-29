@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { getAllPlans } from "../api/plan";
 
-import { getPlans } from "../services/requests";
-
-export function usePlans() {
-    const { data, isLoading } = useQuery({
+export function usePlans(id) {
+    const { data: plans, isLoading } = useQuery({
         queryKey: ["plans"],
-        queryFn: getPlans,
+        queryFn: () => getAllPlans(id),
     });
 
 
-    return { plans: data, isLoading };
+    return { plans, isLoading };
 }

@@ -5,30 +5,43 @@ import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 
 import store from "./Store/store";
-import AppLayout from "./ui/AppLayout";
+import AppLayout from "./components/AppLayout";
 import Home from "./pages/Home";
-import LoginPage from "./pages/LoginPage";
+import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
-import Form from "./pages/Form";
-import Goals from "./pages/Goals";
 import Signup from "./pages/Signup";
-import SuccessfulSignup from "./pages/SuccessfulSignup";
-import { AuthProvider } from "./context/FakeAuthContext";
-import PlansPage from "./pages/PlansPage";
+import Tasks from "./pages/Tasks";
+// import Plans from "./pages/Plans";
+import SettingsLayout from "./features/Settings/SettingsLayout";
+import UserSettings from "./features/Settings/UserSettings";
+import PlanSettings from "./features/Settings/PlanSettings";
+import ResetPassword from "./pages/ResetPassword";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { TogglePlanProvider } from "./components/TogglePlanForm";
 
 const router = createBrowserRouter([
 	{
-		element: <AppLayout />,
+		element: (
+			<ProtectedRoute>
+				<AppLayout />
+			</ProtectedRoute>
+		),
 		children: [
 			{ path: "/", element: <Home /> },
-			{ path: "/plans", element: <PlansPage /> },
-			{ path: "/plans/:planId", element: <Goals /> },
-			{ path: "/form", element: <Form /> },
+			// { path: "/plans", element: <Plans /> },
+			{ path: "/plans/:planId", element: <Tasks /> },
+			{
+				element: <SettingsLayout />,
+				children: [
+					{ path: "/settings/user", element: <UserSettings /> },
+					{ path: "/settings/plans", element: <PlanSettings /> },
+				],
+			},
 		],
 	},
-	{ path: "/login", element: <LoginPage /> },
+	{ path: "/login", element: <Login /> },
 	{ path: "/signup", element: <Signup /> },
-	{ path: "/created", element: <SuccessfulSignup /> },
+	{ path: "/reset-password", element: <ResetPassword /> },
 	{ path: "*", element: <NotFoundPage /> },
 ]);
 
@@ -47,33 +60,31 @@ function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<ReactQueryDevtools initialIsOpen={false} />
-			<AuthProvider>
+			<TogglePlanProvider>
 				<Provider store={store}>
 					<RouterProvider router={router} />
 				</Provider>
-			</AuthProvider>
-			<Toaster
-				position='top-center'
-				gutter={12}
-				containerStyle={{ margin: "8px" }}
-				toastOptions={{
-					success: {
-						duration: 3000,
-					},
-					error: {
-						duration: 7000,
-					},
-					style: {
-						fontSize: "16px",
-						maxWidth: "500px",
-						padding: "16px 24px",
-						backgroundColor: "var(--primary-color)",
-						color: "var(--text-black)",
-						boxShadow:
-							"inset -5px -5px 14px #ffffff, inset 5px 5px 14px #a8a8a8",
-					},
-				}}
-			/>
+				<Toaster
+					position='top-center'
+					gutter={12}
+					containerStyle={{ margin: "8px" }}
+					toastOptions={{
+						success: {
+							duration: 2000,
+						},
+						error: {
+							duration: 3000,
+						},
+						style: {
+							fontSize: "16px",
+							maxWidth: "500px",
+							padding: "16px 24px",
+							backgroundColor: "var(--color-secondary)",
+							color: "var(--color-primary)",
+						},
+					}}
+				/>
+			</TogglePlanProvider>
 		</QueryClientProvider>
 	);
 }

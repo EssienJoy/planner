@@ -1,50 +1,34 @@
-import { IoIosArrowRoundBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
-
-import styled from "styled-components";
-import Button from "../../ui/Button";
-import { useCreateUser } from "../../hooks/useCreateUser";
+import Button from "../../components/ui/Button";
+import GoBackNavigation from "../../components/ui/GoBackNavigation";
+import { useSignUp } from "../../hooks/useSignUp";
 
 function SignUpForm() {
-	const navigate = useNavigate();
-
-	const { addUser, isLoading } = useCreateUser();
+	const { signUp, isPending } = useSignUp();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		const data = Object.fromEntries(formData.entries());
 
-		addUser(data);
+		signUp(data);
 	};
 
 	return (
-		<section
-			style={{
-				display: "grid",
-				placeItems: "center",
-				height: "100dvh",
-			}}>
-			<StyledWrapper>
-				<button type='button' onClick={() => navigate(-1)}>
-					<IoIosArrowRoundBack size='2rem' />
-				</button>
+		<section className='grid place-items-center h-dvh px-3'>
+			<div className='bg-secondary text-primary w-full sm:w-1/2 px-4 py-8 rounded-3xl'>
+				<GoBackNavigation />
 
-				<form className='form' onSubmit={handleSubmit}>
-					<h3>Sign up</h3>
+				<form
+					className='rounded-lg flex flex-col gap-5'
+					onSubmit={handleSubmit}>
+					<h3 className='text-center text-2xl sm:text-3xl font-bold'>
+						Sign up
+					</h3>
 
 					<input
-						name='surname'
-						placeholder='Surname'
-						className='input-field'
-						type='text'
-						required
-					/>
-
-					<input
-						name='name'
-						placeholder='Name'
-						className='input-field'
+						name='fullName'
+						placeholder='Full Name'
+						className=' block border-b-2 border-b-white rounded-2xl px-4 py-2 sunken-shadow'
 						type='text'
 						required
 					/>
@@ -52,69 +36,38 @@ function SignUpForm() {
 					<input
 						name='email'
 						placeholder='Email'
-						className='input-field'
+						className=' block border-b-2 border-b-white rounded-2xl px-4 py-2 sunken-shadow'
 						type='email'
 						required
 					/>
-
 					<input
 						name='password'
 						placeholder='Password'
-						className='input-field'
+						className=' block border-b-2 border-b-white rounded-2xl px-4 py-2 sunken-shadow'
 						type='password'
 						required
 					/>
 
-					<Button type='submit' disabled={isLoading}>
-						{isLoading ? "Signing up..." : "Sign Up"}
+					<input
+						name='confirmPassword'
+						placeholder='Confirm Password'
+						className=' block border-b-2 border-b-white rounded-2xl px-4 py-2 sunken-shadow'
+						type='password'
+						required
+					/>
+
+					<Button
+						bg='bg-primary'
+						text='text-secondary'
+						className='self-center'
+						type='submit'
+						disabled={isPending}>
+						{isPending ? "Signing up..." : "Sign Up"}
 					</Button>
 				</form>
-			</StyledWrapper>
+			</div>
 		</section>
 	);
 }
 
 export default SignUpForm;
-
-const StyledWrapper = styled.div`
-	box-shadow: 10px 10px 20px #d4d3d3, -4px -4px 20px #ffffff;
-	width: 60%;
-	padding: 1rem;
-	border-radius: 3rem;
-
-	form {
-		border-radius: 0.5rem;
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-
-		input {
-			border: none;
-			display: block;
-			background-color: transparent;
-			border-bottom: 2px solid #cececf;
-			border-radius: 1rem;
-			padding: 0.5rem 1rem;
-			outline: none;
-
-			&:focus {
-				border-bottom: 2px solid #999;
-			}
-		}
-
-		button {
-			align-self: center;
-		}
-	}
-
-	h3 {
-		text-align: center;
-	}
-
-	@media screen and (max-width: 800px) {
-		width: 70%;
-	}
-	@media screen and (max-width: 550px) {
-		width: 98%;
-	}
-`;

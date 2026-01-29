@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Container from "../ui/Container";
+import Container from "../components/ui/Container";
 
 function NotFoundPage() {
 	return (

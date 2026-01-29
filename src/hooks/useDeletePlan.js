@@ -1,12 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deletePlanId } from '../services/requests';
+import { deletePlan as deletePlanApi } from "../api/plan";
 import toast from "react-hot-toast";
 
 export function useDeletePlan() {
     const queryClient = useQueryClient();
 
     const { mutate: deletePlan, isPending } = useMutation({
-        mutationFn: deletePlanId,
+        mutationFn: deletePlanApi,
         onSuccess: () => {
             toast.success('Plan deleted Successfully');
             queryClient.invalidateQueries(['plans']);
