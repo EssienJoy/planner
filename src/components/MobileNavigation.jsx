@@ -23,12 +23,10 @@ const navList = [
 function MobileNavigation() {
 	const { toggleShowForm } = useTogglePlan();
 	return (
-		<footer className='sm:mt-25 sm:hidden mt-10 '>
-			<Container
-				className=' relative 
-		'>
+		<footer className='mt-25  '>
+		
 				<nav
-					className='absolute top-0 left-0 bg-secondary
+					className=' bg-secondary fixed bottom-0 left-0
 				w-full py-3  rounded-tl-3xl rounded-tr-3xl'>
 					<ul
 						className='flex justify-center gap-10 
@@ -55,7 +53,6 @@ function MobileNavigation() {
 						})}
 					</ul>
 				</nav>
-			</Container>
 		</footer>
 	);
 }
