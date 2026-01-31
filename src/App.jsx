@@ -3,7 +3,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
-
 import store from "./Store/store";
 import AppLayout from "./components/AppLayout";
 import Home from "./pages/Home";
@@ -11,7 +10,6 @@ import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
 import Signup from "./pages/Signup";
 import Tasks from "./pages/Tasks";
-// import Plans from "./pages/Plans";
 import SettingsLayout from "./features/Settings/SettingsLayout";
 import UserSettings from "./features/Settings/UserSettings";
 import PlanSettings from "./features/Settings/PlanSettings";
@@ -21,6 +19,7 @@ import { TogglePlanProvider } from "./components/TogglePlanForm";
 
 const router = createBrowserRouter([
 	{
+		path: "/",
 		element: (
 			<ProtectedRoute>
 				<AppLayout />
@@ -28,9 +27,9 @@ const router = createBrowserRouter([
 		),
 		children: [
 			{ path: "/", element: <Home /> },
-			// { path: "/plans", element: <Plans /> },
 			{ path: "/plans/:planId", element: <Tasks /> },
 			{
+				path: "/settings",
 				element: <SettingsLayout />,
 				children: [
 					{ path: "/settings/user", element: <UserSettings /> },
@@ -49,7 +48,7 @@ const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			staleTime: 0,
-			cacheTime: 1000 * 60 * 5,
+			gcTime: 1000 * 60 * 5,
 			refetchOnWindowFocus: false,
 			retry: 1,
 		},
@@ -60,31 +59,31 @@ function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<ReactQueryDevtools initialIsOpen={false} />
-			<TogglePlanProvider>
-				<Provider store={store}>
+			<Provider store={store}>
+				<TogglePlanProvider>
 					<RouterProvider router={router} />
-				</Provider>
-				<Toaster
-					position='top-center'
-					gutter={12}
-					containerStyle={{ margin: "8px" }}
-					toastOptions={{
-						success: {
-							duration: 2000,
-						},
-						error: {
-							duration: 3000,
-						},
-						style: {
-							fontSize: "16px",
-							maxWidth: "500px",
-							padding: "16px 24px",
-							backgroundColor: "var(--color-secondary)",
-							color: "var(--color-primary)",
-						},
-					}}
-				/>
-			</TogglePlanProvider>
+				</TogglePlanProvider>
+			</Provider>
+			<Toaster
+				position='top-center'
+				gutter={12}
+				containerStyle={{ margin: "8px" }}
+				toastOptions={{
+					success: {
+						duration: 2000,
+					},
+					error: {
+						duration: 3000,
+					},
+					style: {
+						fontSize: "16px",
+						maxWidth: "500px",
+						padding: "16px 24px",
+						backgroundColor: "var(--color-secondary)",
+						color: "var(--color-primary)",
+					},
+				}}
+			/>
 		</QueryClientProvider>
 	);
 }

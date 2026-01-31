@@ -21,10 +21,10 @@ function UserPasswordForm() {
 	return (
 		<form
 			ref={formRef}
-			className='flex flex-col gap-5 max-w-md'
+			className='flex flex-col gap-5 max-w-md text-sm'
 			onSubmit={handleSubmit}>
 			<div className='grid gap-2'>
-				<label className='font-bold'>Current Password</label>
+				<label className='font-bold text-md'>Current Password</label>
 				<input
 					type='password'
 					name='currentPassword'
@@ -58,7 +58,7 @@ function UserPasswordForm() {
 
 			<Button
 				type='submit'
-				className='self-start px-6 py-3 rounded-2xl font-bold custom-button-shadow'
+				className='self-start px-6 py-3 rounded-2xl font-bold'
 				bg='bg-primary'
 				text='text-secondary'
 				disabled={isPending}>

@@ -10,6 +10,7 @@ import { useTogglePlan } from "../../components/TogglePlanForm";
 function PlanLayout() {
 	const { user } = useGetCurrentUser();
 	const { showForm } = useTogglePlan();
+
 	// console.log(user._id);
 	return (
 		<>

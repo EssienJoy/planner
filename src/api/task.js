@@ -57,3 +57,21 @@ export async function editTask({ taskId, data }) {
 
     return task.data.tasks;
 }
+
+
+export async function deleteTask(taskId) {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}tasks/${taskId}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    });
+
+    const result = await res.json();
+
+    if (result.status !== 'success') {
+        // console.log(result);
+        throw new Error(result.message);
+    }
+
+    return result;
+
+}

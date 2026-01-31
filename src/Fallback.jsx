@@ -1,10 +1,18 @@
+import Button from "./components/ui/Button";
+import Container from "./components/ui/Container";
+
 function ErrorFallback({ error, resetErrorBoundary }) {
 	return (
-		<div>
+		<Container className='bg-secondary text-primary'>
 			<p>Something went wrong:</p>
 			<pre>{error.message}</pre>
-			<button onClick={resetErrorBoundary}>Try again</button>
-		</div>
+			<Button
+				bg='bg-primary'
+				text='text-secondary'
+				onClick={resetErrorBoundary}>
+				Try again
+			</Button>
+		</Container>
 	);
 }
 

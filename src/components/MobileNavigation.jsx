@@ -24,10 +24,11 @@ function MobileNavigation() {
 	const { toggleShowForm } = useTogglePlan();
 	return (
 		<footer className='mt-25  '>
-		
+
 				<nav
 					className=' bg-secondary fixed bottom-0 left-0
-				w-full py-3  rounded-tl-3xl rounded-tr-3xl'>
+					w-full py-3  rounded-tl-3xl rounded-tr-3xl 
+					'>
 					<ul
 						className='flex justify-center gap-10 
 					item-center text-primary'>

@@ -6,7 +6,7 @@ export function useEditPlan() {
     const queryClient = useQueryClient();
 
     const { mutate: editPlan, isPending } = useMutation({
-        mutationFn: (data) => editPlanApi(data),
+        mutationFn: ({ plan, planId }) => editPlanApi({ plan, planId }),
         onSuccess: () => {
             toast.success('Plan Succesfully Updated');
             queryClient.invalidateQueries({ queryKey: ["plans"] });

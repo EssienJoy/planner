@@ -2,7 +2,7 @@ import { usePlan } from "../../hooks/usePlan";
 import { useParams } from "react-router-dom";
 import GoBackNavigation from "../../components/ui/GoBackNavigation";
 import TasksList from "./TasksList";
-import AddTask from "../../components/AddTask";
+import AddTask from "./AddTask";
 import Container from "../../components/ui/Container";
 import { useTasks } from "../../hooks/useTasks";
 

@@ -19,7 +19,10 @@ function UserProfileForm() {
 		updateCurrentUser(formData);
 	};
 	return (
-		<form className='flex flex-col gap-5 rounded-3xl' onSubmit={handleSubmit}>
+		<form
+			className='flex flex-col gap-5 rounded-3xl
+		text-sm '
+			onSubmit={handleSubmit}>
 			<div className='grid gap-2'>
 				<label htmlFor='fullName' className='font-bold'>
 					Full Name
@@ -55,7 +58,7 @@ function UserProfileForm() {
 				</div>
 
 				<div className='flex flex-col gap-2'>
-					<label className='font-bold'>Change Profile Photo</label>
+					<label className='font-bold text-md'>Change Profile Photo</label>
 
 					<input
 						className='hidden'
@@ -68,9 +71,10 @@ function UserProfileForm() {
 					<label
 						htmlFor='photo'
 						className='px-4  py-2 rounded-xl 
-						bg-secondary text-primary text-sm
+						 text-sm
 						 flex items-center gap-2 cursor-pointer'>
-						<span>Choose file</span> <MdOutlineFileUpload />
+						<span className='bg-secondary text-primary'>Choose file</span>{" "}
+						<MdOutlineFileUpload />
 					</label>
 				</div>
 			</div>

@@ -57,10 +57,10 @@ function SignUpForm() {
 					/>
 
 					<Button
+						type='submit'
 						bg='bg-primary'
 						text='text-secondary'
 						className='self-center'
-						type='submit'
 						disabled={isPending}>
 						{isPending ? "Signing up..." : "Sign Up"}
 					</Button>

@@ -10,7 +10,7 @@ import { useGetCurrentUser } from "../hooks/useGetCurrentUser";
 
 function Header() {
 	const { isAuthenticated, user } = useGetCurrentUser();
-	console.log(user?.photo);
+	// console.log(user?.photo);
 
 	return (
 		<header className=''>

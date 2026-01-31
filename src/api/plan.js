@@ -51,20 +51,21 @@ export async function getPlan(planId) {
 
 }
 
-export async function editPlan(data) {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}plans/${data.id}`, {
+export async function editPlan({ plan, planId }) {
+    // console.log(plan, planId);
+    const res = await fetch(`${import.meta.env.VITE_API_URL}plans/${planId}`, {
         method: 'PATCH',
         credentials: 'include',
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(data.data)
+        body: JSON.stringify(plan)
     });
 
     const newPlan = await res.json();
 
     if (!res.ok) {
-        console.log(newPlan);
+        // console.log(newPlan);
         throw new Error(newPlan.message);
     }
 

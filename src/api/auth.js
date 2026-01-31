@@ -74,7 +74,7 @@ export async function login(user) {
 
     const result = await res.json();
     if (result.status !== 'success') {
-        console.log(result);
+        // console.log(result);
         throw new Error(result.message);
     }
     return result ?? {};

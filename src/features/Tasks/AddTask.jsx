@@ -1,7 +1,7 @@
 import { HiCheck } from "react-icons/hi";
-import Button from "./ui/Button";
+import Button from "../../components/ui/Button";
 import { useState } from "react";
-import { useCreateTask } from "../hooks/useCreateTask";
+import { useCreateTask } from "../../hooks/useCreateTask";
 
 function AddTask() {
 	const [task, setTask] = useState("");
@@ -15,7 +15,7 @@ function AddTask() {
 		createTask(
 			{
 				task,
-				dueDate: "2026-1-15",
+				dueDate: new Date(),
 			},
 			{
 				onSuccess: () => setTask(""),
@@ -28,13 +28,14 @@ function AddTask() {
 			onSubmit={handleSubmit}>
 			<textarea
 				className=' w-full sm:w-[60%] rounded-3xl p-3 sm:p-6 text-sm sm:text-lg focus:outline-none '
-				name='observations'
-				id='observations'
-				placeholder='start tracking your goals today...'
+				name='task'
+				id='task'
+				placeholder='start tracking your task...'
 				value={task}
 				onChange={(e) => setTask(e.target.value)}></textarea>
 
 			<Button
+				type='submit'
 				className='flex self-start gap-1  items-center sm:self-center text-sm'
 				bg='bg-primary'
 				text='text-secondary'

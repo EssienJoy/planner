@@ -38,6 +38,7 @@ function LoginForm() {
 					/>
 
 					<Button
+						type='submit'
 						className='self-center '
 						bg='bg-primary'
 						text='text-secondary'

@@ -15,7 +15,7 @@ export function useCreateTask() {
 	} = useMutation({
 		mutationFn: (task) => createTaskApi({ data: task, planId }),
 		onSuccess: () => {
-			toast.success('Goal succesfully created');
+			toast.success('Task succesfully created');
 			queryClient.invalidateQueries({ queryKey: ["tasks"] });
 
 			queryClient.invalidateQueries({ queryKey: ["tasks", planId] });
