@@ -5,9 +5,10 @@ export function useGetCurrentUser() {
     const { data: user, isLoading, isError, error } = useQuery({
         queryKey: ["user"],
         queryFn: getCurrentUser,
-    });
+        retry: false,
+        refetchOnWindowFocus: false,
 
-    // console.log(user);
+    });
 
     return { user, isLoading, isError, error, isAuthenticated: user?.role === 'user' };
 }

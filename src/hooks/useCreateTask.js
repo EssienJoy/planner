@@ -20,8 +20,8 @@ export function useCreateTask() {
 
 			queryClient.invalidateQueries({ queryKey: ["tasks", planId] });
 		},
-		onError: (err) => {
-			toast.error("Failed to create goal", err);
+		onError: () => {
+			toast.error("Failed to create goal");
 		},
 	});
 

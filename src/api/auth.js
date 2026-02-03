@@ -36,11 +36,11 @@ export async function signUp(user) {
         body: JSON.stringify(user),
     });
 
-    const data = await res.json();
+    const result = await res.json();
     if (!res.ok) {
-        throw new Error(data.message);
+        throw new Error(result.message);
     }
-    return data ?? {};
+    return result;
 }
 
 
@@ -74,10 +74,9 @@ export async function login(user) {
 
     const result = await res.json();
     if (result.status !== 'success') {
-        // console.log(result);
         throw new Error(result.message);
     }
-    return result ?? {};
+    return result;
 }
 
 //Update Password
@@ -113,7 +112,7 @@ export async function updateCurrentUserPassword(data) {
 
         throw new Error(result.message);
     }
-    return {};
+    return result;
 }
 
 // Forgot password

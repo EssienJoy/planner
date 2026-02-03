@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPlan as createPlanApi } from "../api/plan";
 import toast from "react-hot-toast";
+import { handleApiError } from "../utils/handleApiError";
 
 export function useCreatePlan() {
     const queryClient = useQueryClient();
@@ -12,7 +13,7 @@ export function useCreatePlan() {
             queryClient.invalidateQueries({ queryKey: ["plans"] });
         },
         onError: (err) => {
-            toast.error(` ${err.message}`);
+            handleApiError(err);
         },
     });
 

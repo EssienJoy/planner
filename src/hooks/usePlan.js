@@ -5,6 +5,7 @@ export function usePlan(planId) {
     const { data: plan, isLoading } = useQuery({
         queryKey: ["plan", planId],
         queryFn: () => getPlan(planId),
+        enabled: planId,
     });
 
     return { plan, isLoading };

@@ -51,11 +51,13 @@ function PlanList({ id }) {
 					<p>Are you sure you want to delete this plan?</p>
 				</Modal.Title>
 				<Modal.Actions>
-					<Button bg='bg-[#fc0000]' onClick={handleDelete}>
+					<Button bg='bg-[#fc0000]' className='w-full' onClick={handleDelete}>
 						Yes
 					</Button>
 
-					<Button onClick={close}>No</Button>
+					<Button className='w-full' onClick={close}>
+						No
+					</Button>
 				</Modal.Actions>
 			</Modal>
 			<section>

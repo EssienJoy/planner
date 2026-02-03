@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login as loginApi } from "../api/auth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { handleApiError } from "../utils/handleApiError";
 
 export function useLogin() {
     const navigate = useNavigate();
@@ -15,8 +16,7 @@ export function useLogin() {
             navigate("/");
         },
         onError: (err) => {
-
-            toast.error(err.message);
+            handleApiError(err);
         },
     });
     return { login, isPending };

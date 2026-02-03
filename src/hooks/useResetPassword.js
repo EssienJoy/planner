@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { forgotPassword as forgotPasswordApi } from "../api/auth";
 import toast from "react-hot-toast";
+import { handleApiError } from "../utils/handleApiError";
 
 export function useResetPassword() {
     const {
@@ -12,7 +13,7 @@ export function useResetPassword() {
             toast.success(data.message);
         },
         onError: (err) => {
-            toast.error(err.message);
+            handleApiError(err);
 
         },
     });

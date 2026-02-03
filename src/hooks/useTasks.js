@@ -7,6 +7,7 @@ export function useTasks() {
     const { data: tasks, isLoading, } = useQuery({
         queryKey: ["tasks", planId],
         queryFn: () => getAllTask(planId),
+        enabled: !!planId,
     });
 
     return { tasks, isLoading };

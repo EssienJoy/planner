@@ -59,11 +59,13 @@ function TasksList({ tasks, isTasking }) {
 					<p>Are you sure you want to delete this task?</p>
 				</Modal.Title>
 				<Modal.Actions>
-					<Button bg='bg-[#fc0000]' onClick={handleDelete}>
+					<Button className='w-full' bg='bg-[#fc0000]' onClick={handleDelete}>
 						Yes
 					</Button>
 
-					<Button onClick={close}>No</Button>
+					<Button className='w-full' onClick={close}>
+						No
+					</Button>
 				</Modal.Actions>
 			</Modal>
 			<div className='flex items-center justify-between font-bold text-md sm:text-xl gap-3 flex-wrap my-3'>

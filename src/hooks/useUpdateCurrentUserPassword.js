@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateCurrentUserPassword as updateCurrentUserPasswordApi } from "../api/auth";
 import toast from "react-hot-toast";
+import { handleApiError } from "../utils/handleApiError";
 
 export function useUpdateCurrentUserPassword() {
     const queryClient = useQueryClient();
@@ -15,7 +16,7 @@ export function useUpdateCurrentUserPassword() {
             queryClient.invalidateQueries(['user']);
         },
         onError: (err) => {
-            toast.error(err.message);
+            handleApiError(err);
         },
     });
 

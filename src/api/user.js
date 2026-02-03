@@ -4,12 +4,13 @@ export async function getCurrentUser() {
         credentials: 'include',
     });
 
-    const user = await res.json();
-    if (!res.ok) {
-        throw new Error(user.message);
+
+    const result = await res.json();
+    if (!result.ok) {
+        throw new Error(result.message);
     }
 
-    return user.data.data;
+    return result.data.data;
 }
 
 export async function updateCurrentUser(data) {

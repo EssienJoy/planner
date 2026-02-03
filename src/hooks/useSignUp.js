@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signUp as signUpApi } from "../api/auth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { handleApiError } from "../utils/handleApiError";
 
 export function useSignUp() {
     const navigate = useNavigate();
@@ -15,8 +16,7 @@ export function useSignUp() {
             navigate("/");
         },
         onError: (err) => {
-            toast.error(err.message);
-
+            handleApiError(err);
         },
     });
 

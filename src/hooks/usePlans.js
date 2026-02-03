@@ -3,8 +3,9 @@ import { getAllPlans } from "../api/plan";
 
 export function usePlans(id) {
     const { data: plans, isLoading } = useQuery({
-        queryKey: ["plans"],
+        queryKey: ["plans", id],
         queryFn: () => getAllPlans(id),
+        enabled: !!id,
     });
 
 
