@@ -6,7 +6,8 @@ export async function getCurrentUser() {
 
 
     const result = await res.json();
-    if (!result.ok) {
+    // console.log(result);
+    if (!res.ok) {
         throw new Error(result.message);
     }
 

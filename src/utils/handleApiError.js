@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 
 export function handleApiError(err) {
+    console.log(err);
     console.error(err);
 
     // ✅ Fetch / browser network error

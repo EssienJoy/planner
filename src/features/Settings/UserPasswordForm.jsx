@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { useUpdateCurrentUserPassword } from "../../hooks/useUpdateCurrentUserPassword";
 import Button from "../../components/ui/Button";
+import { useUpdateCurrentUserPassword } from "./hooks/useUpdateCurrentUserPassword";
 
 function UserPasswordForm() {
 	const formRef = useRef(null);

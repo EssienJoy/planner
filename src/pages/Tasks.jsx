@@ -1,4 +1,4 @@
-import TasksLayout from "../features/Tasks/TasksLayout";
+import TasksLayout from "../features/Tasks/components/TasksLayout";
 
 function Tasks() {
 	return <TasksLayout />;

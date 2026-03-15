@@ -1,4 +1,4 @@
-import LoginLayout from "../features/authentication/LoginLayout";
+import LoginLayout from "../features/authentication/components/LoginLayout";
 
 function Login() {
 	return <LoginLayout />;

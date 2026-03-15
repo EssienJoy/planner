@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import Container from "../../components/ui/Container";
-import { useLogout } from "../../hooks/useLogout";
+import { useLogout } from "./hooks/useLogout";
 import HarmburgerMenu from "../../components/HarmburgerMenu";
 import { useState } from "react";
 import MobileSideBar from "./MobileSideBar";

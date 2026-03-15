@@ -1,4 +1,4 @@
-import PlanLayout from "../features/plans/PlanLayout";
+import PlanLayout from "../features/plans/components/PlanLayout";
 
 function Home() {
 	return <PlanLayout />;

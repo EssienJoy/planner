@@ -1,7 +1,7 @@
 import { useGetCurrentUser } from "../../hooks/useGetCurrentUser";
 import { MdOutlineFileUpload } from "react-icons/md";
-import { useUpdateCurrentUser } from "../../hooks/useUpdateCurrentUser";
 import Button from "../../components/ui/Button";
+import { useUpdateCurrentUser } from "./hooks/useUpdateCurrentUser";
 
 function UserProfileForm() {
 	const { updateCurrentUser, isPending } = useUpdateCurrentUser();

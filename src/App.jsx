@@ -16,6 +16,7 @@ import PlanSettings from "./features/Settings/PlanSettings";
 import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { TogglePlanProvider } from "./components/TogglePlanForm";
+import { Notifications } from "./pages/Notifications";
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
 		),
 		children: [
 			{ path: "/", element: <Home /> },
+			{ path: "/notifications", element: <Notifications /> },
 			{ path: "/plans/:planId", element: <Tasks /> },
 			{
 				path: "/settings",

@@ -37,7 +37,7 @@ export async function signUp(user) {
     });
 
     const result = await res.json();
-    if (!res.ok) {
+    if (result.status !== 'success') {
         throw new Error(result.message);
     }
     return result;
@@ -76,7 +76,8 @@ export async function login(user) {
     if (result.status !== 'success') {
         throw new Error(result.message);
     }
-    return result;
+    console.log(result.data);
+    return result.data;
 }
 
 //Update Password

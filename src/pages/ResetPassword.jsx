@@ -1,4 +1,4 @@
-import ResetPasswordForm from "../features/authentication/ResetPasswordForm";
+import ResetPasswordForm from "../features/authentication/components/ResetPasswordForm";
 
 function ResetPassword() {
 	return <ResetPasswordForm />;
