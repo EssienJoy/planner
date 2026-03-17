@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
+
 import store from "./Store/store";
 import AppLayout from "./components/AppLayout";
 import Home from "./pages/Home";
@@ -27,15 +28,15 @@ const router = createBrowserRouter([
 			</ProtectedRoute>
 		),
 		children: [
-			{ path: "/", element: <Home /> },
-			{ path: "/notifications", element: <Notifications /> },
-			{ path: "/plans/:planId", element: <Tasks /> },
+			{ index: true, element: <Home /> },
+			{ path: "notifications", element: <Notifications /> },
+			{ path: "plans/:planId", element: <Tasks /> },
 			{
-				path: "/settings",
+				path: "settings",
 				element: <SettingsLayout />,
 				children: [
-					{ path: "/settings/user", element: <UserSettings /> },
-					{ path: "/settings/plans", element: <PlanSettings /> },
+					{ index: true, element: <UserSettings /> },
+					{ path: "plans", element: <PlanSettings /> },
 				],
 			},
 		],

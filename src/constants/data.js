@@ -30,7 +30,7 @@ export
         },
         {
             text: "Profile",
-            url: "/settings/user",
+            url: "/settings",
             icon: MdManageAccounts,
         },
         // {
@@ -40,7 +40,7 @@ export
         // },
         {
             text: "Notifications",
-            url: "#",
+            url: "/notifications",
             icon: IoMdNotificationsOutline,
         },
         {
