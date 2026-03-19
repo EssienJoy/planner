@@ -3,21 +3,24 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import { Suspense, lazy } from "react";
 
 import store from "./Store/store";
-import AppLayout from "./components/AppLayout";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NotFoundPage from "./pages/NotFoundPage";
-import Signup from "./pages/Signup";
-import Tasks from "./pages/Tasks";
-import SettingsLayout from "./features/Settings/SettingsLayout";
-import UserSettings from "./features/Settings/UserSettings";
-import PlanSettings from "./features/Settings/PlanSettings";
-import ResetPassword from "./pages/ResetPassword";
-import ProtectedRoute from "./components/ProtectedRoute";
 import { TogglePlanProvider } from "./components/TogglePlanForm";
-import { Notifications } from "./pages/Notifications";
+
+import AppLayout from "./components/AppLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const Tasks = lazy(() => import("./pages/Tasks"));
+const Notifications = lazy(() => import("./pages/Notifications"));
+const SettingsLayout = lazy(() => import("./features/Settings/SettingsLayout"));
+const UserSettings = lazy(() => import("./features/Settings/UserSettings"));
+const PlanSettings = lazy(() => import("./features/Settings/PlanSettings"));
 
 const router = createBrowserRouter([
 	{
@@ -58,13 +61,19 @@ const queryClient = new QueryClient({
 	},
 });
 
+function PageLoader() {
+	return <div>Loading...</div>;
+}
+
 function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<ReactQueryDevtools initialIsOpen={false} />
 			<Provider store={store}>
 				<TogglePlanProvider>
-					<RouterProvider router={router} />
+					<Suspense fallback={<PageLoader />}>
+						<RouterProvider router={router} />
+					</Suspense>
 				</TogglePlanProvider>
 			</Provider>
 			<Toaster

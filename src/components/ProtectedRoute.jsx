@@ -4,25 +4,15 @@ import { useGetCurrentUser } from "../hooks/useGetCurrentUser";
 
 function ProtectedRoute({ children }) {
 	const navigate = useNavigate();
-	const { isLoading, isAuthenticated } = useGetCurrentUser();
+	const { isAuthenticated, isLoading } = useGetCurrentUser();
 
 	useEffect(() => {
 		if (!isLoading && !isAuthenticated) {
 			navigate("/login", { replace: true });
 		}
-	}, [isAuthenticated, isLoading, navigate]);
+	}, [isLoading, isAuthenticated, navigate]);
 
-	if (isLoading) {
-		return (
-			<div className='h-dvh flex items-center justify-center'>
-				<div className='spinner' />
-			</div>
-		);
-	}
-
-	if (!isAuthenticated) {
-		return null;
-	}
+	if (isLoading) return <p>Loading...</p>;
 
 	return children;
 }
