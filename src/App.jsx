@@ -10,6 +10,7 @@ import { TogglePlanProvider } from "./components/TogglePlanForm";
 
 import AppLayout from "./components/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Container from "./components/ui/Container";
 
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -62,7 +63,9 @@ const queryClient = new QueryClient({
 });
 
 function PageLoader() {
-	return <div>Loading...</div>;
+	return (
+		<Container className='grid place-items-center h-dvh'>Loading...</Container>
+	);
 }
 
 function App() {

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetCurrentUser } from "../hooks/useGetCurrentUser";
+import Container from "./ui/Container";
 
 function ProtectedRoute({ children }) {
 	const navigate = useNavigate();
@@ -12,7 +13,12 @@ function ProtectedRoute({ children }) {
 		}
 	}, [isLoading, isAuthenticated, navigate]);
 
-	if (isLoading) return <p>Loading...</p>;
+	if (isLoading)
+		return (
+			<Container className='grid place-items-center h-dvh '>
+				Loading...
+			</Container>
+		);
 
 	return children;
 }
