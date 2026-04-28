@@ -9,22 +9,19 @@ export async function signUp(user) {
     if (!user.email) {
         throw new Error('email is required');
     }
-
-    if (!user.password || !user.confirmPassword) {
-        throw new Error('password and confirm password is required');
-    }
-
     if (!user.email.includes('@') || !user.email.includes('.com')) {
         throw new Error('Please enter a valid email');
+    }
+
+
+    if (user.password.length < 8 || user.confirmPassword.length < 8) {
+        throw new Error('Password and confirm Password must be at least 8 characters');
     }
 
     if (user.password !== user.confirmPassword) {
         throw new Error('Passwords are not the same');
     }
 
-    if (user.password.length < 8 || user.confirmPassword.length < 8) {
-        throw new Error('Password and confirm Password must be at least 8 characters');
-    }
 
 
     const res = await fetch(`${import.meta.env.VITE_API_URL}users/signUp`, {
@@ -47,12 +44,8 @@ export async function signUp(user) {
 // login
 export async function login(user) {
 
-    if (!user.email) {
-        throw new Error('email is required');
-    }
-
-    if (!user.password) {
-        throw new Error('password  is required');
+    if (!user.email || !user.password) {
+        throw new Error('email and password is required');
     }
 
     if (!user.email.includes('@') || !user.email.includes('.com')) {

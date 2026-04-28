@@ -1,4 +1,5 @@
 export async function createPlan(plan) {
+    // console.log(plan);
     const res = await fetch(`${import.meta.env.VITE_API_URL}users/${plan.user}/plans`, {
         method: 'POST',
         credentials: 'include',
@@ -10,7 +11,7 @@ export async function createPlan(plan) {
 
     const newPlan = await res.json();
 
-    if (!res.ok) {
+    if (newPlan.status !== 'success') {
         throw new Error(newPlan.message);
     }
 
@@ -42,7 +43,7 @@ export async function getPlan(planId) {
 
 
     const plan = await res.json();
-    if (!res.ok) {
+    if (plan.status !== 'success') {
         throw new Error(plan.message);
 
     }
@@ -64,7 +65,7 @@ export async function editPlan({ plan, planId }) {
 
     const newPlan = await res.json();
 
-    if (!res.ok) {
+    if (newPlan.status !== 'success') {
         // console.log(newPlan);
         throw new Error(newPlan.message);
     }

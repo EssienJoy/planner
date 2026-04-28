@@ -7,7 +7,7 @@ export async function getCurrentUser() {
 
     const result = await res.json();
     // console.log(result);
-    if (!res.ok) {
+    if (result.status !== 'success') {
         throw new Error(result.message);
     }
 
@@ -22,7 +22,7 @@ export async function updateCurrentUser(data) {
     });
 
     const user = await res.json();
-    if (!res.ok) {
+    if (user.status !== 'success') {
         throw new Error(user.message);
     }
 

@@ -125,7 +125,7 @@ function PlanList({ id }) {
 												id='plans'
 												value={planState}
 												required
-												defaultValue={plan.plan}
+												// defaultValue={plan.plan}
 												onChange={(e) => setCreatePlanState(e.target.value)}
 											/>
 											<Button

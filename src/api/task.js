@@ -11,7 +11,7 @@ export async function createTask({ data, planId }) {
 
     const task = await res.json();
 
-    if (task.status === 'fail') {
+    if (task.status !== 'success') {
         throw new Error(task.message);
     }
 
@@ -30,7 +30,7 @@ export async function getAllTask(planId) {
 
 
     const tasks = await res.json();
-    if (!res.ok) {
+    if (tasks.status !== 'success') {
         throw new Error(tasks.message);
 
     }
@@ -51,7 +51,7 @@ export async function editTask({ taskId, data }) {
 
     const task = await res.json();
 
-    if (task.status === 'fail') {
+    if (task.status !== 'success') {
         throw new Error(task.message);
     }
 
