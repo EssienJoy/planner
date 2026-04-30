@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 import { ErrorBoundary } from "react-error-boundary";
 
 import "./style.css";
-import ErrorFallback from "./Fallback";
 
 import App from "./App";
+import ErrorFallback from "./components/Fallback";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
@@ -14,5 +14,5 @@ createRoot(document.getElementById("root")).render(
 			onReset={() => window.location.replace("/")}>
 			<App />
 		</ErrorBoundary>
-	</StrictMode>
+	</StrictMode>,
 );

@@ -11,6 +11,7 @@ import { TogglePlanProvider } from "./components/TogglePlanForm";
 import AppLayout from "./components/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Container from "./components/ui/Container";
+import ErrorPage from "./components/ErrorPage";
 
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
 				<AppLayout />
 			</ProtectedRoute>
 		),
+		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "notifications", element: <Notifications /> },
