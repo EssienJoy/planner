@@ -1,7 +1,6 @@
 import { CalendarDays, Mail, Pencil } from "lucide-react"
 
 import { Link } from "@/components"
-import Container from "@/components/ui/Container"
 
 type ProfileUser = {
 	fullName?: string

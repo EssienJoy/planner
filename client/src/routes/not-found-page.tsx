@@ -1,5 +1,5 @@
 ﻿import { useNavigate } from "react-router"
-import Container from "../components/ui/Container"
+import Container from "../components/Container"
 import { Button, Link as UiLink } from "@/components"
 
 function NotFoundPage() {

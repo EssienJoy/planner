@@ -18,7 +18,7 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	Button,
-} from "../../../components"
+} from "@/components"
 
 function TasksList({ tasks = [], actionData = null }) {
 	const submit = useSubmit()

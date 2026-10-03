@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router"
 import { Collapsible } from "@base-ui/react/collapsible"
 import { FiChevronDown, FiLock } from "react-icons/fi"
-import Button from "../../components/ui/AppButton"
+import { Button } from "@/components"
 import { MdAutoDelete, MdManageAccounts } from "react-icons/md"
 import { FaUserCog } from "react-icons/fa"
 

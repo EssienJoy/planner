@@ -1,7 +1,7 @@
 import { Form, Link, useLocation, useNavigation } from "react-router"
 import { Collapsible } from "@base-ui/react/collapsible"
 import { FiChevronDown, FiLock } from "react-icons/fi"
-import Button from "../../components/ui/AppButton"
+import { Button } from "@/components"
 import { MdAutoDelete, MdManageAccounts } from "react-icons/md"
 import { FaUserCog } from "react-icons/fa"
 
@@ -117,12 +117,7 @@ function MobileSideBar({ setIsToggleMenu }) {
 				})}
 			</ul>
 			<Form action="/logout" method="post">
-				<Button
-					type="submit"
-					disabled={isPending}
-					bg="bg-white"
-					text="text-primary"
-					className="mt-5 font-bold text-lg w-full">
+				<Button type="submit">
 					{isPending ? "Logging out..." : "Logout"}
 				</Button>
 			</Form>

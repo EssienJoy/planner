@@ -121,7 +121,7 @@ export async function forgotPassword(email) {
 	})
 
 	const result = await res.json()
-	if (!result.status !== "success") {
+	if (result.status !== "success") {
 		throw new Error(result.message)
 	}
 	return result

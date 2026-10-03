@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react"
 import { useNavigation, useSubmit } from "react-router"
 
-import { Button } from "../../../components"
+import { Button } from "@/components"
 
 function AddTask({ actionData = null }) {
 	const submit = useSubmit()

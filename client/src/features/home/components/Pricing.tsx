@@ -1,6 +1,5 @@
 import { Check } from "lucide-react"
-import Container from "../../../components/ui/Container"
-import { Link } from "@/components"
+import { Link, Container } from "@/components"
 
 const plans = [
 	{

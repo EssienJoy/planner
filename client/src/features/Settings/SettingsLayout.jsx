@@ -1,8 +1,8 @@
 ﻿import { Outlet } from "react-router"
-import HarmburgerMenu from "../../components/HarmburgerMenu"
 import { useState } from "react"
 import MobileSideBar from "./MobileSideBar"
 import SideBar from "./SideBar"
+import { HarmburgerMenu } from "@/components"
 
 function SettingsLayout({ user }) {
 	const [toggleMenu, setIsToggleMenu] = useState(false)

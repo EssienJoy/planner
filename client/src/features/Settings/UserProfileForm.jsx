@@ -1,6 +1,6 @@
 import { Form, useActionData, useNavigation } from "react-router"
 import { MdOutlineFileUpload } from "react-icons/md"
-import Button from "../../components/ui/AppButton"
+import { Button } from "@/components"
 
 function UserProfileForm({ user }) {
 	const actionData = useActionData()
@@ -73,12 +73,7 @@ function UserProfileForm({ user }) {
 				</div>
 			</div>
 
-			<Button
-				type="submit"
-				className="self-start mt-4"
-				disabled={isPending}
-				bg="bg-primary"
-				text="text-secondary">
+			<Button type="submit" disabled={isPending}>
 				{isPending ? "updating..." : "Update User"}
 			</Button>
 			{actionData?.error && (

@@ -2,7 +2,7 @@ import { Form, Link, redirect, useNavigation } from "react-router"
 import type { Route } from "./+types/login"
 
 import { login } from "@/features/authentication/lib/auth"
-import Image from "@/components/ui/Image"
+import Image from "@/components/Image"
 import { Button } from "@/components"
 
 export async function action({ request }: Route.ActionArgs) {
@@ -58,83 +58,83 @@ function LoginForm({ actionData }: Route.ComponentProps) {
 				</div>
 
 				<div className="p-8 sm:p-10">
-				<Image
-					src="/img/png/calendar-logo.avif"
-					alt="Plannerly logo"
-					className="mx-auto h-16 w-16 rounded-2xl object-cover lg:hidden"
-				/>
+					<Image
+						src="/img/png/calendar-logo.avif"
+						alt="Plannerly logo"
+						className="mx-auto h-16 w-16 rounded-2xl object-cover lg:hidden"
+					/>
 
-				<h1 className="mt-6 text-center text-2xl font-extrabold tracking-tight text-foreground">
-					Welcome back
-				</h1>
-				<p className="mt-2 text-center text-sm text-foreground-muted">
-					Log in to pick up right where you left off.
-				</p>
+					<h1 className="mt-6 text-center text-2xl font-extrabold tracking-tight text-foreground">
+						Welcome back
+					</h1>
+					<p className="mt-2 text-center text-sm text-foreground-muted">
+						Log in to pick up right where you left off.
+					</p>
 
-				<Form method="post" className="mt-5 flex flex-col gap-5">
-					<div>
-						<label
-							htmlFor="email"
-							className="mb-1.5 block text-sm font-bold text-foreground">
-							Email
-						</label>
-						<input
-							id="email"
-							className="block w-full rounded-xl border border-input-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-input-placeholder focus:border-input-focus focus:outline-none"
-							type="email"
-							name="email"
-							placeholder="you@example.com"
-							required
-							autoComplete="email"
-						/>
-					</div>
+					<Form method="post" className="mt-5 flex flex-col gap-5">
+						<div>
+							<label
+								htmlFor="email"
+								className="mb-1.5 block text-sm font-bold text-foreground">
+								Email
+							</label>
+							<input
+								id="email"
+								className="block w-full rounded-xl border border-input-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-input-placeholder focus:border-input-focus focus:outline-none"
+								type="email"
+								name="email"
+								placeholder="you@example.com"
+								required
+								autoComplete="email"
+							/>
+						</div>
 
-					<div>
-						<label
-							htmlFor="password"
-							className="mb-1.5 block text-sm font-bold text-foreground">
-							Password
-						</label>
-						<input
-							id="password"
-							className="block w-full rounded-xl border border-input-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-input-placeholder focus:border-input-focus focus:outline-none"
-							type="password"
-							name="password"
-							placeholder="Enter your password"
-							required
-							autoComplete="current-password"
-						/>
-					</div>
+						<div>
+							<label
+								htmlFor="password"
+								className="mb-1.5 block text-sm font-bold text-foreground">
+								Password
+							</label>
+							<input
+								id="password"
+								className="block w-full rounded-xl border border-input-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-input-placeholder focus:border-input-focus focus:outline-none"
+								type="password"
+								name="password"
+								placeholder="Enter your password"
+								required
+								autoComplete="current-password"
+							/>
+						</div>
 
-					<Button
-						type="submit"
-						size="lg"
-						className="mt-2 w-full"
-						disabled={isSubmitting}>
-						{isSubmitting ? "Logging in..." : "Log in"}
-					</Button>
-					{actionData?.message && (
-						<p
-							role="alert"
-							className="mt-6 rounded-xl border border-error/30 bg-error-muted px-4 py-3 text-center text-sm font-semibold text-error-foreground">
-							{actionData.message}
-						</p>
-					)}
-				</Form>
+						<Button
+							type="submit"
+							size="lg"
+							className="mt-2 w-full"
+							disabled={isSubmitting}>
+							{isSubmitting ? "Logging in..." : "Log in"}
+						</Button>
+						{actionData?.message && (
+							<p
+								role="alert"
+								className="mt-6 rounded-xl border border-error/30 bg-error-muted px-4 py-3 text-center text-sm font-semibold text-error-foreground">
+								{actionData.message}
+							</p>
+						)}
+					</Form>
 
-				<p className="mt-6 text-center text-sm text-foreground-muted">
-					<Link
-						className="font-semibold text-primary hover:underline"
-						to="/reset-password">
-						Forgot password?
-					</Link>
-					<span> · </span>
-					<Link
-						className="font-semibold text-primary hover:underline"
-						to="/signup">
-						Create account
-					</Link>
-				</p>
+					<p className="mt-6 text-center text-sm text-foreground-muted">
+						<Link
+							className="font-semibold text-primary hover:underline"
+							to="/reset-password">
+							Forgot password?
+						</Link>
+						<span> · </span>
+						<Link
+							className="font-semibold text-primary hover:underline"
+							to="/signup">
+							Create account
+						</Link>
+					</p>
 				</div>
 			</div>
 		</section>

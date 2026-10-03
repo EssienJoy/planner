@@ -1,5 +1,5 @@
 import { CalendarCheck, Crosshair, TrendingUp } from "lucide-react"
-import Container from "../../../components/ui/Container"
+import { Container } from "@/components"
 
 const items = [
 	{

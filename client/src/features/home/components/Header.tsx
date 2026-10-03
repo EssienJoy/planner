@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react"
 import { Link as NextLink } from "react-router"
 import { Menu } from "lucide-react"
-import Container from "../../../components/ui/Container"
-import { Link, Sheet, SheetContent, SheetTrigger } from "@/components"
+import {
+	Link,
+	Sheet,
+	SheetContent,
+	SheetTrigger,
+	Container,
+} from "@/components"
 // import { cn } from "@/lib/utils"
 
 const navItems = [

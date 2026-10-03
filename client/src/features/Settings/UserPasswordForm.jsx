@@ -1,6 +1,6 @@
+import { Button } from "@/components"
 import { useEffect, useRef } from "react"
 import { Form, useActionData, useNavigation } from "react-router"
-import Button from "../../components/ui/AppButton"
 
 function UserPasswordForm() {
 	const formRef = useRef(null)
@@ -52,12 +52,7 @@ function UserPasswordForm() {
 				/>
 			</div>
 
-			<Button
-				type="submit"
-				className="self-start font-bold"
-				bg="bg-primary"
-				text="text-secondary"
-				disabled={isPending}>
+			<Button type="submit" disabled={isPending}>
 				{isPending ? "Updating..." : "Update Password"}
 			</Button>
 			{actionData?.error && (

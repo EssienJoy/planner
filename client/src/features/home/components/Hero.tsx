@@ -1,5 +1,4 @@
-import Container from "../../../components/ui/Container"
-import { Link } from "@/components"
+import { Link, Container } from "@/components"
 import { ArrowRight } from "lucide-react"
 
 function Hero() {

@@ -1,5 +1,5 @@
 import { Check } from "lucide-react"
-import Container from "../../../components/ui/Container"
+import { Container } from "@/components"
 
 const points = [
 	"Keep related tasks together under one plan",

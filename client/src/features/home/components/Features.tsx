@@ -6,7 +6,7 @@ import {
 	Target,
 	UserRound,
 } from "lucide-react"
-import Container from "../../../components/ui/Container"
+import { Container } from "@/components"
 
 const features = [
 	{

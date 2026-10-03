@@ -1,5 +1,5 @@
 import { Link as NextLink } from "react-router"
-import Container from "../../../components/ui/Container"
+import { Container } from "@/components"
 
 const columns = [
 	{
