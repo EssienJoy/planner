@@ -1,0 +1,32 @@
+# Dependencies (each app installs its own)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Real secrets — never commit these (the .example files stay tracked)
+client/.env
+server/config.env
+*.local
+
+# Build output
+client/dist/
+client/build/
+dist/
+build/
+
+# Generated route types (recreated by `npm run typecheck` / dev)
+client/.react-router/
+
+# Logs
+*.log
+logs/
+server/logs/
+
+# Working notes
+IMPLEMENTATION_SUMMARY.md
+
+# OS / editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
