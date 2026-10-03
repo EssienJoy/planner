@@ -19,6 +19,7 @@ function UserProfileForm({ user }) {
 				</label>
 				<input
 					name="fullName"
+					disabled
 					className="block w-full rounded-xl border border-input-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-input-placeholder focus:border-input-focus focus:outline-none"
 					type="text"
 					defaultValue={user?.fullName}
@@ -30,6 +31,7 @@ function UserProfileForm({ user }) {
 					Email
 				</label>
 				<input
+					disabled
 					name="email"
 					className="block w-full rounded-xl border border-input-border bg-input px-4 py-2.5 text-sm text-foreground placeholder:text-input-placeholder focus:border-input-focus focus:outline-none"
 					type="text"
@@ -41,7 +43,7 @@ function UserProfileForm({ user }) {
 			<div className="flex items-center gap-6 mb-8">
 				<div className="w-12 h-12 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-border bg-primary-subtle">
 					<img
-						src={`/img/png/default.jpg`}
+						src={user?.photo || `/img/png/default.jpg`}
 						alt="User profile"
 						className="w-full h-full object-cover"
 					/>
