@@ -21,7 +21,8 @@ const app = express();
 app.use(cors({
     origin:
         ['http://localhost:5173',
-            'https://planner-six-chi.vercel.app'
+            'https://planner-six-chi.vercel.app',
+            'https://plannerly-task.netlify.app'
         ],
     credentials: true
 }));
