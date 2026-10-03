@@ -58,7 +58,7 @@ Open http://localhost:5173 — sign up, and you're in the planner.
 ### 3. Production builds
 
 ```bash
-cd client && npm run build    # client -> dist/
+cd client && npm run build    # client -> build/
 cd server && npm start        # serves the API with NODE_ENV=production
 ```
 
