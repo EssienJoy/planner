@@ -17,6 +17,9 @@ build/
 # Generated route types (recreated by `npm run typecheck` / dev)
 client/.react-router/
 
+# Local Vercel build metadata (regenerated every build; contains machine paths)
+client/.vercel/
+
 # Logs
 *.log
 logs/
