@@ -18,6 +18,7 @@ export default [
 			route("user-control", "./routes/user-control.tsx"),
 		]),
 		route("profile", "./routes/profile.tsx"),
+		route("notifications", "./routes/notifications.tsx"),
 		route("logout", "./routes/logout.ts"),
 	]),
 	route("login", "./routes/login.tsx"),
