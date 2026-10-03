@@ -20,6 +20,9 @@ client/.react-router/
 # Local Vercel build metadata (regenerated every build; contains machine paths)
 client/.vercel/
 
+# Local Netlify build state (regenerated every deploy)
+client/.netlify/
+
 # Logs
 *.log
 logs/

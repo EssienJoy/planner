@@ -1,0 +1,7 @@
+# Netlify deploys the client/ workspace; the Netlify React Router
+# plugin (see client/vite.config.js) generates the SSR function and
+# routing rules at build time, so no redirects block is needed here.
+[build]
+  base = "client"
+  command = "npm run build"
+  publish = "dist/client"
