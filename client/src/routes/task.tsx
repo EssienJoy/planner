@@ -1,6 +1,6 @@
 import type { Route } from "./+types/task"
 import { ArrowLeft, CheckCheck } from "lucide-react"
-import { Link } from "react-router"
+import { Link, useNavigation } from "react-router"
 
 import { getPlan } from "../features/plans/lib/plan"
 import AddTask from "../features/Tasks/components/AddTask"
@@ -148,8 +148,26 @@ export function HydrateFallback() {
 	return <LoadingSpinner label="Loading tasks" />
 }
 
+function TasksSkeleton() {
+	return (
+		<ul className="space-y-3" aria-label="Loading tasks">
+			{Array.from({ length: 4 }).map((_, index) => (
+				<li
+					key={index}
+					className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-4">
+					<span className="size-5 shrink-0 animate-pulse rounded-md bg-surface-muted" />
+					<span className="h-4 flex-1 animate-pulse rounded-md bg-surface-muted" />
+					<span className="h-4 w-16 shrink-0 animate-pulse rounded-md bg-surface-muted" />
+				</li>
+			))}
+		</ul>
+	)
+}
+
 function PlanTasks({ loaderData, actionData }: Route.ComponentProps) {
 	const { plan, tasks, error } = loaderData
+	const navigation = useNavigation()
+	const isReloading = navigation.state === "loading"
 	const completedCount = tasks.filter((task) => task.completed).length
 
 	return (
@@ -207,7 +225,11 @@ function PlanTasks({ loaderData, actionData }: Route.ComponentProps) {
 			)}
 
 			<AddTask actionData={actionData} />
-			<TasksList tasks={tasks} actionData={actionData} />
+			{isReloading ? (
+				<TasksSkeleton />
+			) : (
+				<TasksList tasks={tasks} actionData={actionData} />
+			)}
 		</section>
 	)
 }

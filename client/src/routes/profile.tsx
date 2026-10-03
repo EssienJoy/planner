@@ -1,5 +1,4 @@
 import type { Route } from "./+types/profile"
-import { useNavigation } from "react-router"
 import { getCurrentUser } from "../api/user"
 import ProfileCard from "../features/profile/components/ProfileCard"
 
@@ -13,14 +12,7 @@ export function HydrateFallback() {
 }
 
 function Profile({ loaderData }: Route.ComponentProps) {
-	const navigation = useNavigation()
-
-	return (
-		<ProfileCard
-			user={loaderData.user}
-			isLoading={navigation.state === "loading"}
-		/>
-	)
+	return <ProfileCard user={loaderData.user} isLoading={false} />
 }
 
 export default Profile
