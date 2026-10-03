@@ -4,6 +4,7 @@ const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 const multer = require('multer');
 const sharp = require('sharp');
+const { uploadBuffer } = require('../utils/cloudinary');
 
 
 const multerStorage = multer.memoryStorage();
@@ -23,17 +24,21 @@ const upload = multer({
 
 exports.uploadUserPhoto = upload.single('photo');
 
-exports.resizeUserPhoto = (req, res, next) => {
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     if (!req.file) return next();
 
+    const buffer = await sharp(req.file.buffer)
+        .resize(500, 500)
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toBuffer();
 
-    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-
-    sharp(req.file.buffer).resize(500, 500).toFormat('jpeg').jpeg({
-        quality: 90
-    }).toFile(`public/img/users/${req.file.filename}`);
+    const result = await uploadBuffer(buffer, {
+        public_id: `user-${req.user.id}-${Date.now()}`,
+    });
+    req.file.cloudinaryUrl = result.secure_url;
     next();
-};
+});
 
 const filterObj = (obj, ...allowedFields) => {
     const newObj = {};
@@ -56,8 +61,6 @@ exports.getUser = factory.getOne(User);
 
 exports.updateMe = catchAsync(
     async (req, res, next) => {
-        // console.log(req.body);
-        // .log(req.file);
 
         if (req.body.password || req.body.confirmPassword) {
             return next(
@@ -65,10 +68,17 @@ exports.updateMe = catchAsync(
                     'This route is not for password updates. Please Use /resetMyPassword ',
                     400));
         }
+        if (req.body.email) {
+            return next(
+                new AppError(
+                    'This route is not for email updates. Please Use /upate-my-email ',
+                    400));
+        }
+
 
 
         const filteredBody = filterObj(req.body, 'fullName', 'email', 'photo');
-        if (req.file) filteredBody.photo = req.file.filename;
+        if (req.file?.cloudinaryUrl) filteredBody.photo = req.file.cloudinaryUrl;
         const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
             new: true,
             runValidators: true,
