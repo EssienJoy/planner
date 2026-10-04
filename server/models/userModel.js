@@ -26,7 +26,17 @@ const userSchema = new mongoose.Schema(
             enum: ['user', 'admin'],
             default: 'user'
         },
-
+        emailVerified: {
+            type: Boolean,
+            default: false
+        },
+        emailVerificationToken: {
+            type: String,
+            default: null
+        },
+        emailVerificationExpires: {
+            type: Date,
+        },
         password: {
             type: String,
             required: [true, 'Password is required'],
@@ -111,6 +121,17 @@ userSchema.methods.createPasswordResetToken = function () {
 
 
     return resetToken;
+};
+
+userSchema.methods.createEmailVerificationToken = function () {
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    this.emailVerificationToken =
+        crypto.createHash('sha256').update(verificationToken).digest('hex');
+
+    this.emailVerificationExpires = Date.now() + 24 * 60 * 60 * 1000;
+
+
+    return verificationToken;
 };
 const User = mongoose.model('User', userSchema);
 

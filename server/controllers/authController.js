@@ -48,12 +48,51 @@ exports.signUp = catchAsync(async (req, res, next) => {
         email: req.body.email,
         password: req.body.password,
         confirmPassword: req.body.confirmPassword,
+        role: 'user',
     });
 
-    const url = `${req.protocol}://localhost:5173/settings/user`;
-    await new Email(newUser, url).sendWelcome();
+    const verificationToken = newUser.createEmailVerificationToken();
+    await newUser.save({ validateBeforeSave: false });
+
+    try {
+        const verifyURL = `${req.protocol}://${req.get(
+            'host'
+        )}/api/v1/users/verify-email/${verificationToken}`;
+
+        await new Email(newUser, verifyURL).sendEmailVerification();
+    } catch (err) {
+        console.error('Verification email failed to send:', err.message);
+        newUser.emailVerificationToken = undefined;
+        newUser.emailVerificationExpires = undefined;
+        await newUser.save({ validateBeforeSave: false });
+        // Account still created — the user can request a new link later.
+    }
+
     createSendToken(newUser, 201, req, res);
 
+});
+
+exports.verifyEmail = catchAsync(async (req, res, next) => {
+    const hashedToken = crypto.createHash('sha256')
+        .update(req.params.token)
+        .digest('hex');
+
+    const user = await User.findOne({
+        emailVerificationToken: hashedToken,
+        emailVerificationExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+        return next(new AppError('Verification link is invalid or has expired', 400));
+    }
+
+    user.emailVerified = true;
+    user.emailVerificationToken = undefined;
+    user.emailVerificationExpires = undefined;
+    await user.save({ validateBeforeSave: false });
+
+    const clientUrl = (process.env.CLIENT_URL || 'http://localhost:5173').replace(/\/$/, '');
+    res.redirect(`${clientUrl}/login?verified=true`);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -74,6 +113,29 @@ exports.login = catchAsync(async (req, res, next) => {
     ) {
         return next(new AppError('Incorrect email or password', 401));
     }
+
+    if (!user.emailVerified) {
+        const verificationToken = user.createEmailVerificationToken();
+        await user.save({ validateBeforeSave: false });
+
+        try {
+            const verifyURL = `${req.protocol}://${req.get(
+                'host'
+            )}/api/v1/users/verify-email/${verificationToken}`;
+
+            await new Email(user, verifyURL).sendEmailVerification();
+        } catch (err) {
+            console.error('Verification email failed to send:', err.message);
+        }
+
+        return next(
+            new AppError(
+                'Please verify your email address. A fresh verification link has been sent to your inbox.',
+                403
+            )
+        );
+    }
+
     createSendToken(user, 200, req, res);
 
 });

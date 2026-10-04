@@ -12,9 +12,6 @@ module.exports = class Email {
     };
 
     newTransport() {
-        // if (process.env.NODE_ENV === 'production') {
-        //     return '1';
-        // }
 
         return nodemailer.createTransport({
             host: process.env.EMAIL_HOST,
@@ -52,6 +49,13 @@ module.exports = class Email {
 
     async sendWelcome() {
         await this.send('welcome', 'Welcome to the Planners Family!');
+    }
+
+    async sendEmailVerification() {
+        await this.send(
+            'verifyEmail',
+            'Verify your Planner email address (valid for 24 hours)'
+        );
     }
 
     async sendPasswordReset() {

@@ -1,4 +1,4 @@
-import { Form, Link, redirect, useNavigation } from "react-router"
+import { Form, Link, redirect, useNavigation, useSearchParams } from "react-router"
 import type { Route } from "./+types/login"
 
 import { login } from "@/features/authentication/lib/auth"
@@ -34,6 +34,7 @@ export async function action({ request }: Route.ActionArgs) {
 function LoginForm({ actionData }: Route.ComponentProps) {
 	// console.log("Action data:", actionData)
 	const navigation = useNavigation()
+	const [searchParams] = useSearchParams()
 
 	const isSubmitting = navigation.state === "submitting"
 
@@ -70,6 +71,14 @@ function LoginForm({ actionData }: Route.ComponentProps) {
 					<p className="mt-2 text-center text-sm text-foreground-muted">
 						Log in to pick up right where you left off.
 					</p>
+
+					{searchParams.get("verified") && (
+						<p
+							role="status"
+							className="mt-6 rounded-xl border border-success/30 bg-success/10 px-4 py-3 text-center text-sm font-semibold text-success">
+							Email verified — welcome in! Please log in.
+						</p>
+					)}
 
 					<Form method="post" className="mt-5 flex flex-col gap-5">
 						<div>
