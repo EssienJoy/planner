@@ -12,10 +12,10 @@ function Benefits() {
 	return (
 		<section
 			id="about"
-			className="scroll-mt-16 border-y border-border bg-lime-50 py-20 sm:py-24">
+			className="scroll-mt-16 border-y border-border bg-lime-50 py-20 sm:py-24 dark:bg-[#16241c]">
 			<Container className="grid items-center gap-12 lg:grid-cols-2">
 				<div data-reveal>
-					<p className="text-xs font-bold uppercase text-lime-800">
+					<p className="text-xs font-bold uppercase text-lime-800 dark:text-lime-200">
 						A little more headspace
 					</p>
 					<h2 className="mt-3 max-w-lg text-3xl font-extrabold text-foreground sm:text-4xl">
@@ -72,7 +72,7 @@ function Benefits() {
 							<span className="text-sm font-semibold text-foreground">
 								Send the first draft
 							</span>
-							<span className="ml-auto text-xs text-amber-800">
+							<span className="ml-auto text-xs text-amber-800 dark:text-amber-200">
 								Today
 							</span>
 						</li>

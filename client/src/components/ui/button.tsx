@@ -7,23 +7,26 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default:
-					"bg-primary text-foreground-inverse hover:bg-primary/90",
-				outline:
-					"border-primary bg-primary-subtle text-primary hover:bg-[var(--color-primary-muted)] hover:text-[var(--color-primary-hover)] aria-expanded:bg-[var(--color-primary-muted)] aria-expanded:text-[var(--color-primary)]",
-				secondary:
-					"bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] hover:bg-[var(--color-secondary-hover)] aria-expanded:bg-[var(--color-secondary)] aria-expanded:text-[var(--color-secondary-foreground)]",
-				ghost: "text-[var(--color-foreground)] hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-primary)] aria-expanded:bg-[var(--color-surface-hover)] aria-expanded:text-[var(--color-primary)]",
-				destructive:
-					"bg-[var(--color-error)] text-[var(--color-foreground-inverse)] hover:bg-[var(--color-error-foreground)] focus-visible:border-[var(--color-error)] focus-visible:ring-[var(--color-error)]/20 dark:bg-[var(--color-error-foreground)] dark:hover:bg-[var(--color-error)]",
-				link: "text-[var(--color-primary)] underline-offset-4 hover:underline",
+				default: `bg-primary text-foreground-inverse font-bold
+					hover:bg-primary-hover`,
+				outline: `border-primary bg-primary-subtle text-primary
+					hover:bg-secondary-hover hover:text-primary-hover
+					dark:border-border-primary dark:bg-transparent dark:text-foreground-primary dark:hover:bg-white/10 dark:hover:text-foreground-primary`,
+				secondary: `bg-secondary text-secondary-foreground 
+					hover:bg-secondary-hover`,
+				ghost: `text-foreground hover:bg-surface-hover
+				 hover:text-primary`,
+				destructive: `bg-error text-foreground-inverse 
+				hover:text-error-foreground 
+					  dark:bg-error-foreground dark:hover:bg-error`,
+				link: "text-primary underline-offset-4 hover:underline",
 			},
 			size: {
 				default:
-					"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-				xs: "h-6 gap-1 rounded-[min(var(--primitive-radius-8),0.625rem)] px-2 text-xs in-data-[slot=button-group]:rounded-[var(--primitive-radius-12)] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-				sm: "h-7 gap-1 rounded-[min(var(--primitive-radius-8),0.75rem)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-[var(--primitive-radius-12)] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-				lg: "h-9 gap-1.5 rounded-md  px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+					"h-8 gap-1.5 px-2.5 rounded-md has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+				xs: "h-6 gap-1 rounded-sm px-2 text-xs in-data-[slot=button-group]:rounded-[var(--primitive-radius-12)] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
+				sm: "h-7 gap-1 rounded-lg px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-[var(--primitive-radius-12)] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+				lg: "h-9 gap-1.5 rounded-xl  px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
 				icon: "size-8",
 				"icon-xs":
 					"size-6 rounded-[min(var(--primitive-radius-8),0.625rem)] in-data-[slot=button-group]:rounded-[var(--primitive-radius-12)] [&_svg:not([class*='size-'])]:size-3",

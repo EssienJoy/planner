@@ -14,14 +14,16 @@ function Hero() {
 			/>
 			<div
 				aria-hidden="true"
-				className="absolute inset-0 -z-10 bg-white/65"
+				className="absolute inset-0 -z-10 bg-white/65 dark:bg-black/60"
 			/>
 
 			<Container className="py-16 sm:py-20">
 				<div className="max-w-3xl">
 					<p
 						data-reveal
-						className="inline-flex items-center gap-2 border-l-4 border-primary pl-3 text-xs font-bold uppercase text-foreground">
+						className="inline-flex items-center gap-2 border-l-4
+						 border-primary pl-3 text-xs font-bold uppercase 
+						 text-foreground">
 						A calmer way to plan
 					</p>
 					<h1
@@ -33,7 +35,7 @@ function Hero() {
 					<p
 						data-reveal
 						style={{ transitionDelay: "140ms" }}
-						className="mt-4 max-w-2xl text-2xl font-semibold text-primary sm:text-3xl">
+						className="mt-4 max-w-2xl text-2xl font-semibold text-primary sm:text-3xl dark:text-foreground-primary">
 						Make room for the work that matters.
 					</p>
 					<p
