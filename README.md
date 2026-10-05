@@ -95,7 +95,11 @@ Copy `.env.example` to `config.env`:
 | `JWT_COOKIE_EXPIRES_IN` | Cookie lifetime in days, e.g. `90`                            |
 | `EMAIL_USERNAME` / `EMAIL_PASSWORD` | Mailtrap sandbox credentials (password resets, welcome mail) |
 | `EMAIL_HOST` / `EMAIL_PORT` | Mailtrap SMTP host/port                                   |
-| `EMAIL_FROM`          | Sender address shown on outgoing mail                           |
+| `EMAIL_FROM`          | Sender address shown on outgoing mail — must be a verified sender in your SMTP provider |
+| `CLIENT_URL`          | Frontend base URL used inside email links (no trailing slash) |
+| `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` | Cloudinary credentials for profile photo uploads (Dashboard → API keys). Secret stays server-side |
+| `GROQ_API_KEY`        | Groq API key for the AI planner chatbot (console.groq.com → API Keys). Server side only — never expose it to the browser |
+| `GROQ_MODEL`          | Optional model override (default `openai/gpt-oss-120b`) |
 
 ## How client and server connect
 

@@ -3,9 +3,11 @@ import { updateCurrentUser } from "../api/user"
 import UserSettings from "../features/Settings/UserSettings"
 
 export async function action({ request }: Route.ActionArgs) {
+	const formData = await request.formData()
+
 	try {
 		const result = await updateCurrentUser(
-			await request.formData(),
+			formData,
 			request.headers.get("Cookie"),
 		)
 		return {
