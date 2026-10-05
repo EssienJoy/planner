@@ -9,6 +9,7 @@ const columns = [
 			{ to: "/#overview", label: "Overview" },
 			{ to: "/#features", label: "Features" },
 			{ to: "/#pricing", label: "Pricing" },
+			{ to: "/ai-planner", label: "AI Planner" },
 		],
 	},
 	{

@@ -5,6 +5,7 @@ const planRouter = require('./routes/planRoutes');
 const userRouter = require('./routes/userRoutes');
 const taskRouter = require('./routes/taskRoutes');
 const notificationRouter = require('./routes/notificationRoutes');
+const aiRouter = require('./routes/aiRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const cors = require('cors');
@@ -82,6 +83,7 @@ app.use('/api/v1/plans', planRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/tasks', taskRouter);
 app.use('/api/v1/notifications', notificationRouter);
+app.use('/api/v1/ai', aiRouter);
 
 app.use((req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));

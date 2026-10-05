@@ -10,6 +10,7 @@ import {
 	Overview,
 	Pricing,
 } from "../features/home/components"
+import AiChatPopup from "../features/ai/components/AiChatPopup"
 
 function Home() {
 	const landingRef = useRef<HTMLDivElement>(null)
@@ -63,6 +64,7 @@ function Home() {
 			</main>
 
 			<Footer />
+			<AiChatPopup />
 		</div>
 	)
 }
