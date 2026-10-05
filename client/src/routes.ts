@@ -23,5 +23,6 @@ export default [
 	]),
 	route("login", "./routes/login.tsx"),
 	route("signup", "./routes/signup.tsx"),
+	route("ai-planner", "./routes/ai-planner.tsx"),
 	route("*", "./routes/not-found-page.tsx"),
 ] satisfies RouteConfig

@@ -15,6 +15,7 @@ const navItems = [
 	{ to: "#features", label: "Features" },
 	{ to: "#how-it-works", label: "How it works" },
 	{ to: "#pricing", label: "Pricing" },
+	{ to: "/ai-planner", label: "AI Planner" },
 ]
 
 function Header() {
