@@ -1,22 +1,11 @@
-﻿import { useNavigate } from "react-router";
-import { IoArrowBack } from "react-icons/io5";
-import { HiBell } from "react-icons/hi2";
+﻿import { HiBell } from "react-icons/hi2";
 
 export const NotificationsLayout = () => {
-	const navigate = useNavigate();
 
 	return (
 		<div className='mx-auto w-full max-w-xl'>
 			<div className='mb-6 flex items-center justify-between'>
 				<div className='flex items-center gap-3'>
-					<button
-						type='button'
-						onClick={() => navigate(-1)}
-						aria-label='Go back'
-						className='rounded-xl border border-border bg-surface p-2 text-foreground transition-colors hover:bg-surface-hover'>
-						<IoArrowBack size='1.2rem' />
-					</button>
-
 					<h1 className='flex items-center gap-2 text-xl font-extrabold tracking-tight text-foreground'>
 						<HiBell className='text-primary' />
 						Notifications

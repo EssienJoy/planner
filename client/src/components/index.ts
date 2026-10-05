@@ -1,5 +1,12 @@
 export { Button, buttonVariants } from "./ui/button.tsx"
 export { Link } from "./ui/link.tsx"
+export {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "./ui/card.tsx"
 export { Sheet, SheetContent, SheetTrigger } from "./ui/sheet.tsx"
 export { default as LoadingSpinner } from "./LoadingSpinner"
 export { default as Container } from "./Container.tsx"

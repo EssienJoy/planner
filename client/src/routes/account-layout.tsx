@@ -66,7 +66,8 @@ function AccountLayout({ loaderData }: Route.ComponentProps) {
 			<header className="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-border bg-surface/80 px-4 backdrop-blur-md sm:px-6">
 				<Link
 					to="/plan"
-					className="text-xl font-extrabold tracking-tight text-primary">
+					className="text-xl font-extrabold 
+					dark:text-secondary tracking-tight text-primary">
 					Plannerly
 				</Link>
 
@@ -104,7 +105,9 @@ function AccountLayout({ loaderData }: Route.ComponentProps) {
 						<button
 							type="button"
 							aria-label={
-								collapsed ? "Expand sidebar" : "Collapse sidebar"
+								collapsed
+									? "Expand sidebar"
+									: "Collapse sidebar"
 							}
 							onClick={() => setCollapsed((value) => !value)}
 							className="flex size-9 items-center justify-center rounded-md text-foreground-muted transition-colors hover:bg-surface-hover hover:text-foreground">
@@ -130,7 +133,9 @@ function AccountLayout({ loaderData }: Route.ComponentProps) {
 										to={item.to}
 										title={item.label}
 										className={`flex items-center gap-3 rounded-xl py-2.5 text-sm transition-colors ${
-											collapsed ? "justify-center px-0" : "px-3"
+											collapsed
+												? "justify-center px-0"
+												: "px-3"
 										} lg:justify-start lg:px-3 ${
 											pathname === item.to
 												? "bg-primary-subtle font-bold text-primary"
